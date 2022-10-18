@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { device } from "../device";
-// import { Send } from "react-feather";
+import { Send } from "react-feather";
 
 export default function Contact() {
   return (
@@ -12,7 +12,7 @@ export default function Contact() {
       </p>
       <a href="mailto:joannathhuang@gmail.com">
         <ContactButton>
-          {/* <Send /> */}
+          <Send />
           <span>Say Hello</span>
         </ContactButton>
       </a>

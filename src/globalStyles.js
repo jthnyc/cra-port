@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
         // color: #0f0 !important;
         // outline: solid #f00 1px !important;
         --prussianblue: #04386c;
+        --offwhite: #f8f9fa;
     }
 
     body {

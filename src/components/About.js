@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../device";
 // import Image from "next/image";
-// import profile from "../public/images/profile.png";
+import profile from "../images/profile.png";
 
 export const About = () => {
   return (
@@ -45,6 +45,7 @@ export const About = () => {
           </TechList>
         </AboutText>
         <ImageContainer>
+          <img src={profile} alt="profile" />
           {/* <Image src={profile} width={420} height={500} /> */}
         </ImageContainer>
       </AboutContent>
@@ -95,7 +96,7 @@ const TechList = styled.div`
   & ul {
     display: grid;
     grid-template-columns: 2fr 2fr;
-    gap: 1rem 5rem;
+    gap: 1rem 1rem;
     @media ${device.md} {
       display: flex;
       flex-direction: column;

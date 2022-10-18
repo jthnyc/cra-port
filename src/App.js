@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import { device } from "./device";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Intro, About, Sidebar } from "./components/index";
+import {
+  Navbar,
+  Intro,
+  About,
+  Sidebar,
+  Projects,
+  Contact,
+} from "./components/index";
 import GlobalStyle from "./globalStyles";
 
 function App() {
@@ -15,6 +22,8 @@ function App() {
       <Main>
         <Intro />
         <About />
+        <Projects />
+        <Contact />
       </Main>
     </div>
   );
@@ -32,6 +41,7 @@ const Main = styled.main`
   background-color: var(--prussianblue);
   padding: 0 10rem;
   width: 100%;
+  height: 100%;
   & > section {
     background-color: var(--prussianblue);
     display: flex;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { device } from "../src/device";
+import { device } from "../device";
 import { GitHub, ExternalLink } from "react-feather";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 const Project = ({ title, img, description, stack, github, link }) => {
@@ -24,11 +24,12 @@ const Project = ({ title, img, description, stack, github, link }) => {
           </Link>
         </ProjectLinks>
       </ProjectContent>
-      <ProjectImage>
+      <ProjectImageContainer>
         <a href={link} target="_blank" rel="noreferrer noopener">
-          <Image src={img} width={640} height={450} />
+          <ProjectImage src={img} alt={img} />
+          {/* <Image src={img} width={640} height={450} /> */}
         </a>
-      </ProjectImage>
+      </ProjectImageContainer>
     </ProjectContainer>
   );
 };
@@ -46,7 +47,7 @@ const ProjectContainer = styled.li`
       grid-area: 1 / 6 / -1 / -1;
     }
     &:last-child {
-      grid-area: 1 / 1/ -1 / 5;
+      grid-area: 1 / 1 / -1 / 5;
     }
   }
   & > a {
@@ -72,7 +73,7 @@ const ProjectContent = styled.div`
   }
 `;
 
-const ProjectImage = styled.div`
+const ProjectImageContainer = styled.div`
   grid-column: 1/8;
   box-shadow: 0 0.625rem 1.875rem -0.9375rem;
   grid-area: 1 / 6 / -1 / -1;
@@ -82,11 +83,16 @@ const ProjectImage = styled.div`
   &:hover {
     opacity: 1;
   }
+
   @media ${device.md} {
     grid-area: 1 / 1 / -1 / -1;
     z-index: 1;
     opacity: 0.3;
   }
+`;
+
+const ProjectImage = styled.img`
+  max-width: 120%;
 `;
 
 const ProjectTitle = styled.h3`

@@ -72,7 +72,7 @@ const NavContainer = styled(Container)`
 `;
 
 const Navigation = styled(Nav)`
-  color: white;
+  color: var(--offwhite);
   padding-bottom: 20px;
   @media ${device.md} {
     & a {
