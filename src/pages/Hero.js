@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../device";
 
-const Intro = () => {
+export const Hero = () => {
   return (
     <HeroSection>
       <code>Hey, my name is</code>
@@ -23,7 +23,7 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default Hero;
 
 const HeroSection = styled.section`
   max-width: 1000px;

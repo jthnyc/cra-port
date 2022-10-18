@@ -1,26 +1,37 @@
 import styled from "styled-components";
-import { device } from "./device";
+import GlobalStyle from "../globalStyles";
+// import Head from "next/head";
+import NavBar from "../pages/Navbar";
+import Sidebar from "../components/Sidebar";
+import Hero from "./Hero";
+import About from "./About";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import { device } from "../device";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Intro, About, Sidebar } from "./components/index";
-import GlobalStyle from "./globalStyles";
 
-function App() {
+export default function Index() {
   return (
-    <div className="App">
+    <div>
       <GlobalStyle />
+      {/* <Head> */}
+      {/* <title>Joanna Huang</title>
+      <meta name="description" content="Portfolio Site for Joanna Huang" />
+      <script src="path/to/dist/feather.js"></script> */}
+      {/* </Head> */}
       <Header>
-        <Navbar />
+        <NavBar />
       </Header>
       <Sidebar />
       <Main>
-        <Intro />
+        <Hero />
         <About />
+        <Projects />
+        <Contact />
       </Main>
     </div>
   );
 }
-
-export default App;
 
 const Header = styled.header`
   display: flex;

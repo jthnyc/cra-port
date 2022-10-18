@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
         // background: #000 !important;
         // color: #0f0 !important;
         // outline: solid #f00 1px !important;
+        --prussianblue: #04386c;
     }
 
     body {
