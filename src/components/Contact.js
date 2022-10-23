@@ -6,10 +6,6 @@ export default function Contact() {
   return (
     <ContactSection id="contact">
       <h1>Get In Touch</h1>
-      <p>
-        Always happy to connect with a fellow coder or musician. Feel free to
-        reach out!{" "}
-      </p>
       <a href="mailto:joannathhuang@gmail.com">
         <ContactButton>
           <Send />

@@ -8,8 +8,8 @@ const Intro = () => {
       <h2>Joanna Huang.</h2>
       <h2>I'm a Front End Developer.</h2>
       <p>
-        I was a music teacher who made a career switch to tech a few years back.
-        Currently, I'm building highly customized SFCC e-commerce sites at the{" "}
+        I was a music teacher who made a career switch to tech. Currently, I'm
+        building highly customized SFCC e-commerce sites at the{" "}
         <a
           href="https://www.borngroup.com/"
           target="_blank"
