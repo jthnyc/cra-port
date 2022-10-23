@@ -49,8 +49,8 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <ProjectSection>
-      <h2 id="Projects">Projects</h2>
+    <ProjectSection id="projects">
+      <h2>Projects</h2>
       <ProjectsContainer>
         {projects.map((project) => (
           <Project {...project} key={project.id} />

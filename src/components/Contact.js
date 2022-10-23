@@ -4,8 +4,8 @@ import { Send } from "react-feather";
 
 export default function Contact() {
   return (
-    <ContactSection>
-      <h1 id="Contact">Get In Touch</h1>
+    <ContactSection id="contact">
+      <h1>Get In Touch</h1>
       <p>
         Always happy to connect with a fellow coder or musician. Feel free to
         reach out!{" "}

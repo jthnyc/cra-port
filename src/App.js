@@ -35,6 +35,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--offwhite);
 `;
 
 const Main = styled.main`
@@ -52,15 +53,15 @@ const Main = styled.main`
     color: #edf5e1;
     padding: 0rem;
     margin: 0 auto;
-    &:not(last-child) {
+    &:not(:last-of-type) {
       margin-bottom: 7.5rem;
     }
   }
   @media ${device.sm} {
-    padding: 0;
+    padding: 0 1.5rem;
     & > section {
       padding: 0 1.5rem;
-      &:not(last-child) {
+      &:not(:last-of-type) {
         margin-bottom: 12.5rem;
       }
     }

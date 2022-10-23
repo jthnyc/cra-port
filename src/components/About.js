@@ -5,8 +5,8 @@ import profile from "../images/profile.png";
 
 export const About = () => {
   return (
-    <AboutSection>
-      <h2 id="About">About Me</h2>
+    <AboutSection id="about">
+      <h2>About Me</h2>
       <AboutContent>
         <AboutText>
           <p>
@@ -74,20 +74,31 @@ const AboutContent = styled.div`
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 5rem;
-  @media ${device.md} {
+  @media ${device.lg} {
     display: block;
   }
 `;
 
 const AboutText = styled.div`
-  @media ${device.md} {
-    margin-bottom: 50px;
+  @media ${device.lg} {
+    margin-bottom: 3.125rem;
   }
 `;
 
 const ImageContainer = styled.div`
   position: relative;
   z-index: 5;
+
+  @media ${device.lg} {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media ${device.md} {
+    & img {
+      max-width: 95%;
+    }
+  }
 `;
 
 const TechList = styled.div`
@@ -97,7 +108,7 @@ const TechList = styled.div`
     display: grid;
     grid-template-columns: 2fr 2fr;
     gap: 1rem 1rem;
-    @media ${device.md} {
+    @media ${device.lg} {
       display: flex;
       flex-direction: column;
       padding-left: 0rem;

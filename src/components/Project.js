@@ -13,12 +13,12 @@ const Project = ({ title, img, description, stack, github, link }) => {
         <ProjectStack>{stack}</ProjectStack>
         <ProjectLinks>
           <Link href={github}>
-            <a target="_blank" rel="noreferrer noopener">
+            <a href target="_blank" rel="noreferrer noopener">
               <GitHub />
             </a>
           </Link>
           <Link href={link}>
-            <a target="_blank" rel="noreferrer noopener">
+            <a href target="_blank" rel="noreferrer noopener">
               <ExternalLink />
             </a>
           </Link>
@@ -43,12 +43,12 @@ const ProjectContainer = styled.li`
   align-items: center;
   gap: 0.625rem;
   &:nth-child(odd) {
-    &:first-child {
-      grid-area: 1 / 6 / -1 / -1;
-    }
-    &:last-child {
-      grid-area: 1 / 1 / -1 / 5;
-    }
+    // &:first-child {
+    //   grid-area: 1 / 6 / -1 / -1;
+    // }
+    // &:last-child {
+    //   grid-area: 1 / 1 / -1 / 5;
+    // }
   }
   & > a {
     margin: 1rem 1rem;
@@ -58,8 +58,17 @@ const ProjectContainer = styled.li`
       color: #ff7f11;
     }
   }
-  &:not(last-child) {
+  &:not(:last-child) {
     margin-bottom: 5rem;
+  }
+
+  @media ${device.lg} {
+  }
+
+  @media ${device.sm} {
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
   }
 `;
 
@@ -67,9 +76,10 @@ const ProjectContent = styled.div`
   grid-column: 7/-1;
   position: relative;
   grid-area: 1 / 1 / -1 / 5;
-  @media ${device.md} {
-    grid-area: 1 / 2 / -1 / 11;
+  @media ${device.lg} {
+    grid-area: 1 / 1 / 1 / 11;
     z-index: 10;
+    margin-left: 15px;
   }
 `;
 
@@ -93,6 +103,11 @@ const ProjectImageContainer = styled.div`
 
 const ProjectImage = styled.img`
   max-width: 120%;
+  z-index: 9;
+
+  @media ${device.md} {
+    max-width: 100%;
+  }
 `;
 
 const ProjectTitle = styled.h3`
@@ -110,6 +125,7 @@ const ProjectDescription = styled.p`
   width: 120%;
   color: white;
   z-index: 1;
+
   @media ${device.md} {
     padding: 0rem 1rem 1rem;
     padding-left: 0rem;

@@ -10,10 +10,9 @@ const Navigation = () => {
         <StyledToggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <StyledNav className="me-auto">
-            <StyledNavLink href="#home">About</StyledNavLink>
-            <StyledNavLink href="#link">Experience</StyledNavLink>
-            <StyledNavLink href="#link">Projects</StyledNavLink>
-            <StyledNavLink href="#link">Contact</StyledNavLink>
+            <StyledNavLink href="#about">About</StyledNavLink>
+            <StyledNavLink href="#projects">Projects</StyledNavLink>
+            <StyledNavLink href="#contact">Contact</StyledNavLink>
           </StyledNav>
         </Navbar.Collapse>
       </StyledContainer>
