@@ -13,12 +13,12 @@ const Project = ({ title, img, description, stack, github, link }) => {
         <ProjectStack>{stack}</ProjectStack>
         <ProjectLinks>
           <Link href={github}>
-            <a href target="_blank" rel="noreferrer noopener">
+            <a target="_blank" rel="noreferrer noopener">
               <GitHub />
             </a>
           </Link>
           <Link href={link}>
-            <a href target="_blank" rel="noreferrer noopener">
+            <a target="_blank" rel="noreferrer noopener">
               <ExternalLink />
             </a>
           </Link>
