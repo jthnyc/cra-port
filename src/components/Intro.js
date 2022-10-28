@@ -26,12 +26,12 @@ const Intro = () => {
 export default Intro;
 
 const HeroSection = styled.section`
-  max-width: 1000px;
+  max-width: 62.5rem;
   & code {
     color: white;
   }
   & a {
-    color: #ff9b71;
+    color: var(--lightorange);
     font-weight: bold;
   }
   & code {

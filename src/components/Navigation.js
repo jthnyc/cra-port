@@ -53,7 +53,6 @@ const StyledNav = styled(Nav)`
   margin: 0 20px;
 
   @media ${device.sm} {
-    // border: 5px solid green;
     width: 80%;
     margin: 0;
   }
@@ -63,9 +62,5 @@ const StyledNavLink = styled(Nav.Link)`
   font-weight: bold;
   &:not(:last-child) {
     margin-right: 1.5rem;
-  }
-
-  @media ${device.sm} {
-    // border: 1px solid red;
   }
 `;

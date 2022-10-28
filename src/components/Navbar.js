@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "../device";
 import { Navbar, Nav, Container } from "react-bootstrap";
-// import alignright from "../../public/images/alignright.svg";
 
 export default function NavBar() {
   return (
@@ -13,7 +12,6 @@ export default function NavBar() {
       variant="dark"
     >
       <NavContainer>
-        {/* <Navbar.Brand href="/">繁</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           id="responsive-navbar-nav"
@@ -38,7 +36,6 @@ export default function NavBar() {
 }
 
 const NavigationBar = styled(Navbar)`
-  background-color: var(--prussianblue) !important;
   display: flex;
   & a {
     color: white !important;
@@ -67,7 +64,6 @@ const NavContainer = styled(Container)`
   }
   @media ${device.sm} {
     padding-left: 1.5rem;
-    // background-color: darkblue;
   }
 `;
 

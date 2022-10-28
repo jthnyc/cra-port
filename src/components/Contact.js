@@ -45,12 +45,11 @@ const ContactButton = styled.button`
   box-shadow: 0.625rem 1rem 3rem 0rem;
   &:hover {
     cursor: pointer;
-    background-image: linear-gradient(
-      150deg,
-      #eadedb 0%,
-      #bc70a4 50%,
-      #bfd641 75%
-    );
+    border-color: var(--lightorange);
+    span,
+    svg {
+      color: var(--lightorange);
+    }
   }
   & svg {
     position: relative;

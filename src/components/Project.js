@@ -42,14 +42,6 @@ const ProjectContainer = styled.li`
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
   gap: 0.625rem;
-  &:nth-child(odd) {
-    // &:first-child {
-    //   grid-area: 1 / 6 / -1 / -1;
-    // }
-    // &:last-child {
-    //   grid-area: 1 / 1 / -1 / 5;
-    // }
-  }
   & > a {
     margin: 1rem 1rem;
     transition: all 0.125s ease;
@@ -60,9 +52,6 @@ const ProjectContainer = styled.li`
   }
   &:not(:last-child) {
     margin-bottom: 5rem;
-  }
-
-  @media ${device.lg} {
   }
 
   @media ${device.sm} {
@@ -114,7 +103,7 @@ const ProjectTitle = styled.h3`
   font-size: 1.2em;
   margin: 1.25rem 0rem;
   display: flex;
-  color: #ff9b71;
+  color: var(--lightorange);
   z-index: 1;
 `;
 

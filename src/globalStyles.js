@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         // outline: solid #f00 1px !important;
         --prussianblue: #04386c;
         --offwhite: #f8f9fa;
+        --lightorange: #ff9b71;
     }
 
     body {

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "../device";
-// import Image from "next/image";
 import profile from "../images/profile.png";
 
 export const About = () => {
@@ -45,7 +44,6 @@ export const About = () => {
         </AboutText>
         <ImageContainer>
           <img src={profile} alt="profile" />
-          {/* <Image src={profile} width={420} height={500} /> */}
         </ImageContainer>
       </AboutContent>
     </AboutSection>
