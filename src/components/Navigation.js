@@ -56,6 +56,7 @@ const StyledNav = styled(Nav)`
 
 const StyledNavLink = styled(Nav.Link)`
   font-weight: bold;
+  letter-spacing: 0.0781rem;
   &:not(:last-child) {
     margin-right: 1.5rem;
   }
@@ -64,5 +65,6 @@ const StyledNavLink = styled(Nav.Link)`
     padding-top: 0.9375rem;
     padding-left: 0.9375rem;
     margin-right: 0;
+    font-size: .95rem;
   }
 `;

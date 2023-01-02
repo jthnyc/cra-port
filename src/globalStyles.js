@@ -10,12 +10,13 @@ const GlobalStyle = createGlobalStyle`
         // color: #0f0 !important;
         // outline: solid #f00 1px !important;
         --prussianblue: #04386c;
+        --white: #edf5e1;
         --offwhite: #f8f9fa;
         --lightorange: #ff9b71;
     }
 
     body {
-        font-family: "Calibre", sans-serif;
+        font-family: "Helvetica Neue", sans-serif;
         font-size: 1rem;
         -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;

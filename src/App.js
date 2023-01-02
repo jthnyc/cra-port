@@ -8,6 +8,7 @@ import {
   Sidebar,
   Projects,
   Contact,
+  Footer
 } from "./components/index";
 import GlobalStyle from "./globalStyles";
 
@@ -25,6 +26,7 @@ function App() {
         <Projects />
         <Contact />
       </Main>
+      <Footer />
     </div>
   );
 }

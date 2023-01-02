@@ -24,14 +24,7 @@ const ContactSection = styled.section`
   }
   & span,
   svg {
-    color: #edf5e1;
-  }
-  & p {
-    margin-bottom: 2rem;
-    max-width: 36rem;
-    @media ${device.sm} {
-      max-width: 18.75rem;
-    }
+    color: var(--white);
   }
 `;
 
@@ -40,7 +33,7 @@ const ContactButton = styled.button`
   height: 5rem;
   font-size: 1.3em;
   background: var(--prussianblue);
-  border: 1px solid #edf5e1;
+  border: 1px solid var(--white);
   border-radius: 0.5rem;
   box-shadow: 0.625rem 1rem 3rem 0rem;
   &:hover {
