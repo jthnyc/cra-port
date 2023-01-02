@@ -63,19 +63,23 @@ export const Projects = () => {
 export default Projects;
 
 const ProjectSection = styled.section`
+  max-width: 62.5rem;
+  align-items: flex-start;
   display: flex;
-  min-height: 80vh;
-  width: 100%;
+  // min-height: 80vh;
+  // width: 100%;
   color: #edf5e1;
   padding: 0 2rem;
-  margin: 0 auto;
-  max-width: 1000px;
-  align-items: flex-start;
+  
   & h2 {
+    margin-top: 10rem;
     margin-bottom: 2rem;
   }
   @media ${device.sm} {
-    padding: 0rem 6.5rem;
+    & h2 {
+      margin-top: 6rem;
+      margin-bottom: 2rem;
+    }
   }
 `;
 

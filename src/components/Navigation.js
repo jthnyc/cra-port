@@ -24,10 +24,6 @@ export default Navigation;
 
 const StyledNavbar = styled(Navbar)`
   > .container {
-    @media ${device.sm} {
-      flex-direction: column;
-      align-items: flex-end;
-    }
   }
 `;
 
@@ -50,7 +46,7 @@ const StyledToggle = styled(Navbar.Toggle)`
 
 const StyledNav = styled(Nav)`
   width: 50%;
-  margin: 0 20px;
+  margin: 0 1.25rem;
 
   @media ${device.sm} {
     width: 80%;
@@ -62,5 +58,11 @@ const StyledNavLink = styled(Nav.Link)`
   font-weight: bold;
   &:not(:last-child) {
     margin-right: 1.5rem;
+  }
+
+  @media ${device.sm} {
+    padding-top: 0.9375rem;
+    padding-left: 0.9375rem;
+    margin-right: 0;
   }
 `;

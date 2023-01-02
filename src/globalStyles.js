@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-family: "Calibre", sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;
     }

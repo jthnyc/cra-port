@@ -51,8 +51,8 @@ const NavigationBar = styled(Navbar)`
 
 const NavContainer = styled(Container)`
   background-color: var(--prussianblue);
-  padding-top: 15px;
-  max-width: 2400px;
+  padding-top: 0.9375rem;
+  max-width: 150rem;
   padding-left: 3.125rem;
   & button {
     border: none;
@@ -69,7 +69,7 @@ const NavContainer = styled(Container)`
 
 const Navigation = styled(Nav)`
   color: var(--offwhite);
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
   @media ${device.md} {
     & a {
       display: flex;
@@ -82,7 +82,7 @@ const Navigation = styled(Nav)`
         margin-bottom: 0.625rem;
       }
       &:last-child {
-        margin-left: 254px;
+        margin-left: 15.875rem;
         display: flex;
         justify-content: center;
         margin-right: 1rem;

@@ -68,7 +68,7 @@ const ProjectContent = styled.div`
   @media ${device.lg} {
     grid-area: 1 / 1 / 1 / 11;
     z-index: 10;
-    margin-left: 15px;
+    margin-left: 0.9375rem;
   }
 `;
 
@@ -105,6 +105,10 @@ const ProjectTitle = styled.h3`
   display: flex;
   color: var(--lightorange);
   z-index: 1;
+
+  @media ${device.sm} {
+    margin: .5rem 0;
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -118,6 +122,12 @@ const ProjectDescription = styled.p`
   @media ${device.md} {
     padding: 0rem 1rem 1rem;
     padding-left: 0rem;
+  }
+
+  @media ${device.sm} {
+    margin-bottom: 1.5rem;
+    padding: 0;
+    height: 2rem;
   }
 `;
 
@@ -143,5 +153,9 @@ const ProjectLinks = styled.div`
     &:hover {
       color: #ff7f11;
     }
+  }
+
+  @media ${device.sm} {
+    margin-top: .5rem;
   }
 `;

@@ -17,7 +17,7 @@ export default function Contact() {
 }
 
 const ContactSection = styled.section`
-  max-width: 1000px;
+  max-width: 62.5rem;
   align-items: center;
   & h1 {
     margin-bottom: 2rem;
@@ -53,6 +53,6 @@ const ContactButton = styled.button`
   }
   & svg {
     position: relative;
-    left: -10px;
+    left: -0.625rem;
   }
 `;

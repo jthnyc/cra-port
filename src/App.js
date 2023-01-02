@@ -36,6 +36,9 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: var(--offwhite);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 `;
 
 const Main = styled.main`
@@ -60,7 +63,7 @@ const Main = styled.main`
   @media ${device.sm} {
     padding: 0 1.5rem;
     & > section {
-      padding: 0 1.5rem;
+      padding: 0rem;
       &:not(:last-of-type) {
         margin-bottom: 12.5rem;
       }

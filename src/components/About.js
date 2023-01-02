@@ -53,16 +53,19 @@ export const About = () => {
 export default About;
 
 const AboutSection = styled.section`
-  max-width: 1000px;
+  max-width: 62.5rem;
   align-items: flex-start;
+  & h2 {
+    margin-top: 6rem;
+  }
+
   & p {
     margin-top: 2rem;
     line-height: 1.5rem;
   }
   @media ${device.md} {
     & p {
-      margin-top: 1.5rem;
-      max-width: 20rem;
+      margin: 1.5rem 0 0 0;
     }
   }
 `;
