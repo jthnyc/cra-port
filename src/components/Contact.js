@@ -35,7 +35,8 @@ const ContactButton = styled.button`
   background: var(--prussianblue);
   border: 1px solid var(--white);
   border-radius: 0.5rem;
-  box-shadow: 0.625rem 1rem 3rem 0rem;
+  -webkit-box-shadow: 0.625rem 1rem 3rem 0rem rgba(0, 0, 0, 0.4);
+  box-shadow: 0.625rem 1rem 3rem 0rem rgba(0, 0, 0, 0.4);
   &:hover {
     cursor: pointer;
     border-color: var(--lightorange);
