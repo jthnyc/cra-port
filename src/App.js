@@ -16,22 +16,30 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Header>
-        <Navbar />
-      </Header>
-      <Sidebar />
-      <Main>
-        <Intro />
-        <About />
-        <Projects />
-        <Contact />
-      </Main>
-      <Footer />
+      <MainWrapper>
+        <Header>
+          <Navbar />
+        </Header>
+        <Sidebar />
+        <Main>
+          <Intro />
+          <About />
+          <Projects />
+          <Contact />
+        </Main>
+        <Footer />
+      </MainWrapper>
     </div>
   );
 }
 
 export default App;
+
+const MainWrapper = styled.div`
+  width: 100vw;
+  height: 100%;
+  overflow-y: scroll;
+`;
 
 const Header = styled.header`
   display: flex;
