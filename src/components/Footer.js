@@ -18,5 +18,6 @@ const FooterSection = styled.div`
 
   @media ${device.md} {
     justify-content: center;
+    padding-right: 0;
   }
 `;
