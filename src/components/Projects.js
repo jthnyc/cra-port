@@ -78,7 +78,6 @@ const ProjectSection = styled.section`
   @media ${device.sm} {
     & h2 {
       margin-top: 6rem;
-      margin-bottom: 2rem;
     }
   }
 `;

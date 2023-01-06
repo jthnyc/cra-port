@@ -39,6 +39,7 @@ export default Project;
 const ProjectContainer = styled.li`
   position: relative;
   display: grid;
+  grid-auto-flow: dense;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
   gap: 0.625rem;
@@ -53,10 +54,30 @@ const ProjectContainer = styled.li`
   &:not(:last-child) {
     margin-bottom: 5rem;
   }
+  
+  &:nth-child(2n + 2)>div:first-child {
+    grid-area: 1 / 10 / -1 / -1;
+  }
+
+  &:nth-child(2n + 2)>div:nth-child(2) {
+    grid-area: 1 / 1 / -1 / 8;
+  }
 
   @media ${device.sm} {
     &:not(:last-child) {
       margin-bottom: 3rem;
+    }
+
+    &:nth-child(2n + 2)>div:first-child {
+      grid-area: 1 / 1 / 1 / 11;
+      z-index: 10;
+      margin-left: 0.9375rem;
+    }
+
+    &:nth-child(2n + 2)>div:nth-child(2) {
+      grid-area: 1 / 1 / -1 / -1;
+      z-index: 1;
+      opacity: 0.3;
     }
   }
 `;
