@@ -63,7 +63,13 @@ const ProjectContainer = styled.li`
     grid-area: 1 / 1 / -1 / 8;
   }
 
-  @media ${device.sm} {
+  @media ${device.lg} {
+    &:nth-child(2n + 2)>div:first-child {
+      grid-area: 1 / 7 / -1 / -1;
+    }
+  }
+
+  @media ${device.md} {
     &:not(:last-child) {
       margin-bottom: 3rem;
     }
