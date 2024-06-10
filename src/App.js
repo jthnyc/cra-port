@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <MainWrapper>
+      <div>
         <Header>
           <Navbar />
         </Header>
@@ -28,18 +28,12 @@ function App() {
           <Contact />
         </Main>
         <Footer />
-      </MainWrapper>
+      </div>
     </div>
   );
 }
 
 export default App;
-
-const MainWrapper = styled.div`
-  width: 100vw;
-  height: 100%;
-  overflow-y: scroll;
-`;
 
 const Header = styled.header`
   display: flex;
