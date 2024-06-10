@@ -4,7 +4,7 @@ import { device } from "../device";
 export default function Footer() {
   return (
     <FooterSection>
-      <p>&#169; 2023 Joanna Huang</p>
+      <p>&#169; 2024 Joanna Huang</p>
     </FooterSection>
   );
 }

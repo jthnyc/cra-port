@@ -20,8 +20,8 @@ export const About = () => {
             learned about iOS Development via Swift.
           </p>
           <p>
-            After graduating, I joined a music education startup and my skills
-            in business development while still coding on the side. Fast forward
+            After graduating, I joined a music education startup to expand their APAC
+            business development while still coding on the side. Fast forward
             to 2020, my aspiration to be a better developer prompted me to take
             another deep dive, this time into full stack web development through
             the Grace Hopper program at Fullstack Academy.
@@ -29,11 +29,16 @@ export const About = () => {
           <p>
             Since then, I've had the privilege to work at the Born group, where
             I build bespoke and accessible digital experiences for our clients.
+            The most recent and longest project is Converse where I've contributed
+            towards their global feature enhancements as well as implemented new design
+            through React on a legacy code base.
           </p>
           <p>Here are a few technologies I've been working with recently:</p>
           <TechList>
             <ul>
-              <li>JavaScript (ES6+)</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
               <li>React</li>
               <li>SCSS</li>
               <li>Node.js</li>
