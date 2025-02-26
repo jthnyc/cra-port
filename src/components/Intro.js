@@ -2,19 +2,23 @@ import styled from "styled-components";
 import { device } from "../device";
 import { Greeting } from './';
 import { spotify, duolingo, dumpling } from '../images';
+import { useTranslation } from "react-i18next";
 
 const Intro = () => {
+  const { t, ready } = useTranslation("intro");
+
+  if (!ready) return <p>Loading translations...</p>;
+
   return (
     <HeroSection>
       <Greeting />
-      <h2>Frontend Engineer & Former Music Teacher</h2>
+      <h2>{t("title")}</h2>
       <p>
-        I turned my passion for teaching into crafting beautiful, high-performance web experiences.
-        I specialize in scalable, user-friendly applications that bring designs to life.
+        {t("intro-p1")}
         <br/><br/>
-        When I'm not coding, you'll find me analyzing <ActivityIcon src={spotify} alt="Spotify"/> film soundtracks, keeping my <ActivityIcon src={duolingo} alt="duolingo" /> Italian and German streaks alive, or making dumplings <ActivityIcon src={dumpling} alt="dumpling" /> from scratch.
+        {t("intro-p2")} <ActivityIcon src={spotify} alt="Spotify"/> {t("intro-p2-1")} <ActivityIcon src={duolingo} alt="duolingo" /> {t("intro-p2-2")} <ActivityIcon src={dumpling} alt="dumpling" /> {t("intro-p2-3")}
         <br/><br/>
-        🚀 Let's build something amazing together!
+        🚀 {t("intro-p3")}
       </p>
     </HeroSection>
   );

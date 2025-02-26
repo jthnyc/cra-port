@@ -1,4 +1,5 @@
 export { default as Navbar } from "./Navigation";
+export { default as LanguageSwitcher } from './LanguageSwitcher';
 export { default as Intro } from "./Intro";
 export { default as Greeting } from './Greeting';
 export { default as About } from "./About";

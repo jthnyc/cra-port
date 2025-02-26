@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { device } from "../device";
 import { profile } from '../images';
 
-
 export const About = () => {
   return (
     <AboutSection id="about">

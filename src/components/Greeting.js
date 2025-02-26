@@ -28,8 +28,7 @@ export default Greeting;
 
 const GreetingText = styled.code`
   opacity: 1;
-  display: flex;
-  align-items: center
+  font-size: 16px;
   animation: fade-in-out 3s ease-in-out infinite;
 
   @keyframes fade-in-out {

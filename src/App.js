@@ -3,6 +3,7 @@ import { device } from "./device";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Navbar,
+  LanguageSwitcher,
   Intro,
   About,
   Sidebar,
@@ -19,6 +20,7 @@ function App() {
       <div>
         <Header>
           <Navbar />
+          <LanguageSwitcher />
         </Header>
         <Sidebar />
         <Main>

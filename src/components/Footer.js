@@ -4,7 +4,7 @@ import { device } from "../device";
 export default function Footer() {
   return (
     <FooterSection>
-      <p>&#169; 2025 Joanna Huang</p>
+      <FooterText>&#169; 2025 Joanna Huang</FooterText>
     </FooterSection>
   );
 }
@@ -19,5 +19,13 @@ const FooterSection = styled.div`
   @media ${device.md} {
     justify-content: center;
     padding-right: 0;
+  }
+`;
+
+const FooterText = styled.p`
+  margin-right: 5.5rem;
+
+  @media ${device.md} and ${device.lg} {
+    margin-right: 0;
   }
 `;
