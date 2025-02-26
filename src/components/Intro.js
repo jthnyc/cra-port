@@ -1,23 +1,20 @@
 import styled from "styled-components";
 import { device } from "../device";
+import { Greeting } from './';
+import { spotify, duolingo, dumpling } from '../images';
 
 const Intro = () => {
   return (
     <HeroSection>
-      <code>Hey, my name is</code>
-      <h2>Joanna Huang.</h2>
-      <h2>I'm a Front End Developer.</h2>
+      <Greeting />
+      <h2>Frontend Engineer & Former Music Teacher</h2>
       <p>
-        I was a music teacher who made a career switch to tech. Currently, I'm
-        building highly customized SFCC e-commerce sites at the{" "}
-        <a
-          href="https://www.borngroup.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Born Group
-        </a>
-        .
+        I turned my passion for teaching into crafting beautiful, high-performance web experiences.
+        I specialize in scalable, user-friendly applications that bring designs to life.
+        <br/><br/>
+        When I'm not coding, you'll find me analyzing <ActivityIcon src={spotify} alt="Spotify"/> film soundtracks, keeping my <ActivityIcon src={duolingo} alt="duolingo" /> Italian and German streaks alive, or making dumplings <ActivityIcon src={dumpling} alt="dumpling" /> from scratch.
+        <br/><br/>
+        🚀 Let's build something amazing together!
       </p>
     </HeroSection>
   );
@@ -48,4 +45,8 @@ const HeroSection = styled.section`
   @media ${device.sm} {
     padding-top: 7.5rem;
   }
+`;
+
+const ActivityIcon = styled.img`
+  max-width: 1.125rem;
 `;

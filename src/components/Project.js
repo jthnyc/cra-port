@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { device } from "../device";
 import { GitHub, ExternalLink } from "react-feather";
 // import Image from "next/image";
-import Link from "next/link";
 
 const Project = ({ title, img, description, stack, github, link }) => {
   return (
@@ -12,16 +11,12 @@ const Project = ({ title, img, description, stack, github, link }) => {
         <ProjectDescription>{description}</ProjectDescription>
         <ProjectStack>{stack}</ProjectStack>
         <ProjectLinks>
-          <Link href={github}>
-            <a target="_blank" rel="noreferrer noopener">
-              <GitHub />
-            </a>
-          </Link>
-          <Link href={link}>
-            <a target="_blank" rel="noreferrer noopener">
-              <ExternalLink />
-            </a>
-          </Link>
+          <a href={github} target="_blank" rel="noreferrer noopener">
+            <GitHub />
+          </a>
+          <a href={link} target="_blank" rel="noreferrer noopener">
+            <ExternalLink />
+          </a>
         </ProjectLinks>
       </ProjectContent>
       <ProjectImageContainer>
