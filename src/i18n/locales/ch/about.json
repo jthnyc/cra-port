@@ -1,0 +1,21 @@
+{
+    "title": "自我介紹",
+    "p1": "嗨！我是 Joanna， 一名前端工程師, 熱衷於打造像素完美、且引人入勝的網頁體驗。",
+    "p2": "我的技術之旅並非始於<0>程式碼編輯器，而是教室</0>。身為前音樂教師，我發現許多教育軟體並未真正滿足學生與教師的需求。為了彌補這個落差，我決定轉行進入軟體開發，從<1>iOS 開發</1>開始，並透過 Flatiron School 的 Mobile Dev Corps 計畫學習 Swift, 精進開發技能。",
+    "p3": "畢業後，我加入了一家<2>音樂教育新創公司</2>，負責亞太地區的商業開發，同時持續進行程式開發。然而，我對開發的熱情不斷增長，因此我決定再次深入學習，這次選擇了 Fullstack Academy 的 Grace Hopper 計畫，專攻<3>全端網頁開發</3>。",
+    "p4": "自那時起，我有幸在<4>BORN Group</4> 為知名品牌開發<5>高流量、客製化的數位體驗</5>。其中，我曾參與<6>Converse 全球平台</6>的開發，負責<7>優化結帳流程、產品細節和帳戶管理</7>，為每月約<8>1,200 萬訪客</8>提供更流暢的電商體驗。此外，我也主導了<9>舊有前端架構的現代化改造</9>，實作<10>基於 React 和 Redux 的元件</10>，以提升網站效能與可維護性。",
+    "p5": "目前，我對於<11>推動前端開發的邊界</11>特別感興趣，希望能與優秀的團隊合作，共同打造<12>高品質、可擴展的網頁體驗</12>，並透過程式碼解決現實世界的問題。",
+    "subheader": "我使用的技術工具",
+    "subtext1": "前端",
+    "list1-1": "React, Redux, Context API, React Hooks",
+    "list1-2": "JavaScript (ES6+), TypeScript",
+    "list1-3": "HTML, ISML",
+    "subtext2": "後端",
+    "list2-1": "Node.js, Express.js",
+    "list2-2": "RESTful APIs",
+    "list2-3": "PostgreSQL, Sequelize",
+    "subtext3": "開發與建置工具",
+    "list3-1": "Git, Webpack",
+    "list3-2": "Heroku, Vercel",
+    "list3-3": "SalesForce Commerce Cloud"
+}

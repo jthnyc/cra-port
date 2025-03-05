@@ -1,68 +1,60 @@
 import styled from "styled-components";
 import { device } from "../device";
 import { profile } from '../images';
+import { useTranslation, Trans} from "react-i18next";
 
 export const About = () => {
+  const { t, ready } = useTranslation("about");
+
+  if (!ready) return <p>Loading translations...</p>;
+
   return (
     <AboutSection id="about">
-      <h2>About Me</h2>
+      <h2>
+        {t("title")}
+      </h2>
       <AboutContent>
         <AboutText>
           <p>
-            Hey there! I'm Joanna—a frontend engineer passionate about crafting 
-            pixel-perfect, accessible, and engaging web experiences.
+            {t("p1")}
           </p>
           <p>
-            My journey into tech began in the <strong>classroom, not the code editor</strong>. As a former music teacher, 
-            I saw how educational software often missed the mark for students and educators.
-            Determined to bridge that gap, I transitioned into software development, 
-            starting with <strong>iOS development</strong> through Flatiron School's Mobile Dev Corps, 
-            where I honed my skills in Swift.
+            <Trans i18nKey="p2" ns="about" components={[<strong key="0" />, <strong key="1" />]} />
           </p>
           <p>
-            After graduating, I joined a <strong>music education startup</strong>, leading APAC business 
-            development while continuing to code on the side. But my growing passion 
-            for development led me to take another deep dive—this time into <strong>full-stack 
-            web development</strong> through the Grace Hopper program at Fullstack Academy.
+            <Trans i18nKey="p3" ns="about" components={[<strong key="2" />, <strong key="3" />]} />
           </p>
           <p>
-            Since then, I've had the privilege of building <strong>bespoke, high-traffic digital experiences</strong>, 
-            for global brands at <strong>BORN Group</strong>. Most notably, I've contributed to <strong>
-            Converse's global platform</strong>, where I <strong>optimized checkout flows,
-            product details, and account management</strong> for an e-commerce site serving <strong>~12M monthly visitors</strong>.
-            I also led the modernization of <strong>legacy frontend architecture</strong>, implmenting <strong>React 
-            and Redux-based components</strong> to improve site performance and maintainability.
+            <Trans i18nKey="p4" ns="about" components={[<strong key="4" />, <strong key="5" />, <strong key="6" />, <strong key="7" />, <strong key="8" />, <strong key="9" />, <strong key="10" />]} />
           </p>
           <p>
-            Now, I'm excited to keep <strong>pushing the boundaries of frontend development</strong> collaborating 
-            with teams that build <strong>high-quality, scalable web experiences</strong>, 
-            and solving real-world problems through code.
+            <Trans i18nKey="p5" ns="about" components={[<strong key="11" />, <strong key="12" />]} />
           </p>
           <br></br>
-          <h3>🛠 Technologies I Work With</h3>
+          <h3>🛠 {t("subheader")}</h3>
           <TechList>
             <div>
-              <h4>Frontend</h4>
+              <h4>{t("subtext1")}</h4>
               <List>
-                <li>React, Redux, Context API, React Hooks</li>
-                <li>JavaScript (ES6+), TypeScript</li>
-                <li>HTML, ISML</li>
+                <li>{t("list1-1")}</li>
+                <li>{t("list1-2")}</li>
+                <li>{t("list1-3")}</li>
               </List>
             </div>
             <div>
-              <h4>Backend</h4>
+              <h4>{t("subtext2")}</h4>
               <List>  
-                <li>Node.js, Express.js</li>
-                <li>RESTful APIs</li>
-                <li>PostgreSQL, Sequelize</li>
+                <li>{t("list2-1")}</li>
+                <li>{t("list2-2")}</li>
+                <li>{t("list2-3")}</li>
               </List>
             </div>
             <div>
-              <h4>Dev & Build Tools</h4>
+              <h4>{t("subtext3")}</h4>
               <List> 
-                <li>Git, Webpack</li>
-                <li>Heroku, Vercel</li>
-                <li>SalesForce Commerce Cloud</li>
+                <li>{t("list3-1")}</li>
+                <li>{t("list3-2")}</li>
+                <li>{t("list3-3")}</li>
               </List>
             </div>
           </TechList>
