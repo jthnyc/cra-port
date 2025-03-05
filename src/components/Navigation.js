@@ -2,17 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { device } from "../device";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
+  const { t, ready } = useTranslation("common");
+  if (!ready) return <p>Loading translations...</p>;
+
   return (
     <StyledNavbar collapseOnSelect bg="light" expand="lg">
       <StyledContainer>
         <StyledToggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <StyledNav className="me-auto">
-            <StyledNavLink href="#about">About</StyledNavLink>
-            <StyledNavLink href="#projects">Projects</StyledNavLink>
-            <StyledNavLink href="#contact">Contact</StyledNavLink>
+            <StyledNavLink href="#about">{t("about")}</StyledNavLink>
+            <StyledNavLink href="#projects">{t("projects")}</StyledNavLink>
+            <StyledNavLink href="#contact">{t("contact")}</StyledNavLink>
           </StyledNav>
         </Navbar.Collapse>
       </StyledContainer>
@@ -45,11 +49,9 @@ const StyledToggle = styled(Navbar.Toggle)`
 `;
 
 const StyledNav = styled(Nav)`
-  width: 50%;
   margin: 0 1.25rem;
 
   @media ${device.sm} {
-    width: 80%;
     margin: 0;
   }
 `;

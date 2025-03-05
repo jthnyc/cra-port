@@ -63,7 +63,7 @@ const Main = styled.main`
     padding: 0rem;
     margin: 0 auto;
     &:not(:last-of-type) {
-      margin-bottom: 7.5rem;
+      margin-bottom: 3.5rem;
     }
   }
   @media ${device.sm} {
@@ -71,7 +71,7 @@ const Main = styled.main`
     & > section {
       padding: 0rem;
       &:not(:last-of-type) {
-        margin-bottom: 12.5rem;
+        margin-bottom: 2rem;
       }
     }
   }

@@ -1,0 +1,15 @@
+{
+    "title": "作品",
+    "p1": "YearOne 電影評分",
+    "p1-descriptor": "一個流暢的單頁應用程式，專為電影愛好者打造，讓使用者能夠輕鬆搜尋、評分並探索各種電影。透過 OMDB API 提供即時電影資訊，搭配直觀的評分系統，確保最佳的使用體驗。該應用程式採用 React、JavaScript、HTML 和 CSS 開發，並部署在 Vercel 上，以提供快速且可靠的運行效能。",
+    "p1-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
+    "p2": "The Shoppies 獎",
+    "p2-descriptor": "一個現代化的單頁應用程式，讓使用者能夠搜尋電影並提名他們最喜愛的五部作品。該應用程式由 React、JavaScript、HTML 和 CSS 開發，透過 OMDB API 提供即時電影資訊，並部署於 Vercel，以確保流暢的使用體驗。The Shoppies 讓電影愛好者輕鬆發掘並推薦他們的最愛。",
+    "p2-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
+    "p3": "Wanderlust 旅心",
+    "p3-descriptor": "一款專為旅人設計的網頁應用程式，讓個人能夠輕鬆預訂租賃房源並與其他旅行者建立聯繫。該應用程式由 React、JavaScript、HTML 和 CSS 開發，提供直觀的使用者介面和流暢的預訂體驗。部署在 Vercel 上，Wanderlust 確保快速且可靠的效能，讓旅行規劃更加便利。",
+    "p3-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
+    "p4": "LaLaLime 商場",
+    "p4-descriptor": "一個專注於運動服飾的現代化電子商務平台，提供流暢的線上購物體驗。該平台由 React、JavaScript、HTML 和 CSS 開發，擁有簡潔美觀的 UI 設計與流暢的操作介面。透過 Vercel 部署，確保高效能與穩定運行，LaLaLime 為健身愛好者打造出色的線上購物體驗。",
+    "p4-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel"
+}

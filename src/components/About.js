@@ -5,7 +5,6 @@ import { useTranslation, Trans} from "react-i18next";
 
 export const About = () => {
   const { t, ready } = useTranslation("about");
-
   if (!ready) return <p>Loading translations...</p>;
 
   return (
@@ -73,7 +72,7 @@ const AboutSection = styled.section`
   max-width: 62.5rem;
   align-items: flex-start;
   & h2 {
-    margin-top: 6rem;
+    margin-top: 2rem;
   }
   & p {
     margin-top: 2rem;

@@ -16,9 +16,7 @@ const initI18n = async () => {
     interpolation: { escapeValue: false },
     initImmediate: false,
   });
-  // console.log("✅ i18n initialized with resources:", i18n.options.resources);
-  // console.log(enTranslations);
-  console.log("Escape value setting:", i18n.options.interpolation.escapeValue);
+  console.log("✅ i18n initialized with resources:", i18n.options.resources);
 };
 
 // 🔹 Store the initialization promise and export promise to make sure App waits
