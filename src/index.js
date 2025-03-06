@@ -7,7 +7,6 @@ import { i18nInitPromise } from './i18n/i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 i18nInitPromise.then(() => {
-  console.log('✅ i18n is ready')
   root.render(
     <React.StrictMode>
       <App />

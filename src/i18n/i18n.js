@@ -16,7 +16,6 @@ const initI18n = async () => {
     interpolation: { escapeValue: false },
     initImmediate: false,
   });
-  console.log("✅ i18n initialized with resources:", i18n.options.resources);
 };
 
 // 🔹 Store the initialization promise and export promise to make sure App waits
@@ -24,7 +23,6 @@ const i18nInitPromise = initI18n();
 
 // Load translations dynamically when language changes
 i18n.on("languageChanged", async (lang) => {
-  console.log(`🌍 Language switched to: ${lang}`);
   if (!i18n.hasResourceBundle(lang, "common")) {
     const translations = await loadLocale(lang);
     Object.keys(translations).forEach((ns) => {
