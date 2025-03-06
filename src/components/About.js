@@ -35,25 +35,25 @@ export const About = () => {
             <div>
               <h4>{t("subtext1")}</h4>
               <List>
-                <li>{t("list1-1")}</li>
-                <li>{t("list1-2")}</li>
-                <li>{t("list1-3")}</li>
+                <li><code>{t("list1-1")}</code></li>
+                <li><code>{t("list1-2")}</code></li>
+                <li><code>{t("list1-3")}</code></li>
               </List>
             </div>
             <div>
               <h4>{t("subtext2")}</h4>
               <List>  
-                <li>{t("list2-1")}</li>
-                <li>{t("list2-2")}</li>
-                <li>{t("list2-3")}</li>
+                <li><code>{t("list2-1")}</code></li>
+                <li><code>{t("list2-2")}</code></li>
+                <li><code>{t("list2-3")}</code></li>
               </List>
             </div>
             <div>
               <h4>{t("subtext3")}</h4>
               <List> 
-                <li>{t("list3-1")}</li>
-                <li>{t("list3-2")}</li>
-                <li>{t("list3-3")}</li>
+                <li><code>{t("list3-1")}</code></li>
+                <li><code>{t("list3-2")}</code></li>
+                <li><code>{t("list3-3")}</code></li>
               </List>
             </div>
           </TechList>

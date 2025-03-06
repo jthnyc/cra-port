@@ -5,49 +5,47 @@ import wanderlust from "../images/wanderlust.png";
 import yearonemovieratings from "../images/yearonemovieratings.png";
 import lalalime from "../images/lalalime.png";
 import { device } from "../device";
-
-const projects = [
-  {
-    id: 1,
-    img: yearonemovieratings,
-    title: "YearOne Movie Ratings",
-    description: "Single page application to search and rate movies.",
-    stack: "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    github: "https://github.com/jthnyc/yo-ratings",
-    link: "http://yo-ratings-git-main.joannathuang.vercel.app/",
-  },
-  {
-    id: 2,
-    img: theshoppies,
-    title: "The Shoppies",
-    description: "Single page application to search and nominate top 5 movies.",
-    stack: "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    github: "https://github.com/jthnyc/movie-nom-app",
-    link: "https://movie-nom-app.vercel.app/",
-  },
-  {
-    id: 3,
-    img: wanderlust,
-    title: "Wanderlust",
-    description:
-      "A web app for individuals to book rentals with other travelers.",
-    stack:
-      "Typescript, NextJS, React, Redux, Sequelize, PostgreSQL, Google Cloud SQL",
-    github: "https://github.com/gh-wanderlust/wanderlust",
-    link: "https://github.com/gh-wanderlust/wanderlust",
-  },
-  {
-    id: 4,
-    img: lalalime,
-    title: "LaLaLime",
-    description: "An e-commerce site for athletic apparel.",
-    stack: "React, Redux, Sequelize, PostgreSQL, Heroku",
-    github: "https://github.com/jthnyc/LaLaLime",
-    link: "https://github.com/jthnyc/LaLaLime",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const Projects = () => {
+  const { t, ready } = useTranslation("projects");
+  if (!ready) return <p>Loading translations...</p>;
+  const projects = [
+    {
+      id: 1,
+      img: yearonemovieratings,
+      title: t("p1"),
+      description: t("p1-descriptor"),
+      github: "https://github.com/jthnyc/yo-ratings",
+      link: "http://yo-ratings-git-main.joannathuang.vercel.app/",
+    },
+    {
+      id: 2,
+      img: theshoppies,
+      title: t("p2"),
+      description: t("p2-descriptor"),
+      github: "https://github.com/jthnyc/movie-nom-app",
+      link: "https://movie-nom-app.vercel.app/",
+    },
+    {
+      id: 3,
+      img: wanderlust,
+      title: t("p3"),
+      description: t("p3-descriptor"),
+      github: "https://github.com/gh-wanderlust/wanderlust",
+      link: "https://github.com/gh-wanderlust/wanderlust",
+    },
+    {
+      id: 4,
+      img: lalalime,
+      title: t("p4"),
+      description: t("p4-descriptor"),
+      stack: "",
+      github: "https://github.com/jthnyc/LaLaLime",
+      link: "https://github.com/jthnyc/LaLaLime",
+    },
+  ];
+  
   return (
     <ProjectSection id="projects">
       <h2>Projects</h2>
@@ -66,8 +64,6 @@ const ProjectSection = styled.section`
   max-width: 62.5rem;
   align-items: flex-start;
   display: flex;
-  // min-height: 80vh;
-  // width: 100%;
   color: #edf5e1;
   padding: 0 2rem;
   

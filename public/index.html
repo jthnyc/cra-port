@@ -4,36 +4,48 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Joanna Huang's Portfolio" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="I'm Joanna Huang, a Frontend Developer with expertise in React, JavaScript, and modern web technologies. Explore my projects and let's build something amazing together!" />
+    <meta name="keywords" content="Frontend Developer, React, JavaScript, Portfolio, Web Development, UI/UX, Joanna Huang" />
+    <meta name="robots" content="index, follow" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Joanna Huang - Dev Portfolio</title>
+    <meta property="og:title" content="Joanna Huang - Frontend Developer Portfolio" />
+    <meta property="og:description" content="Explore my projects and contact me for collaborations!" />
+    <meta property="og:image" content="%PUBLIC_URL%/preview-image.jpg" />
+    <meta property="og:url" content="https://joanna.codes" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Joanna Huang - Frontend Developer Portfolio" />
+    <meta name="twitter:description" content="Frontend Developer skilled in React, JavaScript, and UI/UX design. Let's connect!" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/preview-image.jpg" />
+    <meta name="twitter:url" content="https://yourwebsite.com" />
+
+    <link rel="canonical" href="https://joanna.codes" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Joanna Huang",
+        "url": "https://joanna.codes",
+        "jobTitle": "Frontend Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Freelance / Open to Work"
+        },
+        "sameAs": [
+          "https://github.com/jthnyc",
+          "https://linkedin.com/in/joannathhuang/"
+        ]
+      }
+    </script>
+
+    <title>Joanna Huang - Portfolio</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

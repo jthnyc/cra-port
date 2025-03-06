@@ -1,28 +1,27 @@
 import styled from "styled-components";
 import { device } from "../device";
 import { GitHub, ExternalLink } from "react-feather";
-// import Image from "next/image";
 
-const Project = ({ title, img, description, stack, github, link }) => {
+const Project = ({ title, img, description, github, link }) => {
   return (
     <ProjectContainer>
       <ProjectContent>
-        <ProjectTitle>{title}</ProjectTitle>
+        <ProjectDetails>
+          <ProjectTitle>{title}</ProjectTitle>
+          <ProjectLinks>
+            <a href={github} target="_blank" rel="noreferrer noopener">
+              <GitHub />
+            </a>
+            <a href={link} target="_blank" rel="noreferrer noopener">
+              <ExternalLink />
+            </a>
+          </ProjectLinks>
+        </ProjectDetails>
         <ProjectDescription>{description}</ProjectDescription>
-        <ProjectStack>{stack}</ProjectStack>
-        <ProjectLinks>
-          <a href={github} target="_blank" rel="noreferrer noopener">
-            <GitHub />
-          </a>
-          <a href={link} target="_blank" rel="noreferrer noopener">
-            <ExternalLink />
-          </a>
-        </ProjectLinks>
       </ProjectContent>
       <ProjectImageContainer>
         <a href={link} target="_blank" rel="noreferrer noopener">
           <ProjectImage src={img} alt={img} />
-          {/* <Image src={img} width={640} height={450} /> */}
         </a>
       </ProjectImageContainer>
     </ProjectContainer>
@@ -51,11 +50,11 @@ const ProjectContainer = styled.li`
   }
   
   &:nth-child(2n + 2)>div:first-child {
-    grid-area: 1 / 10 / -1 / -1;
+    grid-area: 1 / 9 / -1 / -1;
   }
 
   &:nth-child(2n + 2)>div:nth-child(2) {
-    grid-area: 1 / 1 / -1 / 8;
+    grid-area: 1 / 1 / -1 / 7;
   }
 
   @media ${device.lg} {
@@ -65,10 +64,6 @@ const ProjectContainer = styled.li`
   }
 
   @media ${device.md} {
-    &:not(:last-child) {
-      margin-bottom: 3rem;
-    }
-
     &:nth-child(2n + 2)>div:first-child {
       grid-area: 1 / 1 / 1 / 11;
       z-index: 10;
@@ -84,9 +79,8 @@ const ProjectContainer = styled.li`
 `;
 
 const ProjectContent = styled.div`
-  grid-column: 7/-1;
   position: relative;
-  grid-area: 1 / 1 / -1 / 5;
+  grid-area: 1 / 1 / -1 / 6;
   @media ${device.lg} {
     grid-area: 1 / 1 / 1 / 11;
     z-index: 10;
@@ -94,10 +88,15 @@ const ProjectContent = styled.div`
   }
 `;
 
+const ProjectDetails = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 const ProjectImageContainer = styled.div`
   grid-column: 1/8;
   box-shadow: 0 0.625rem 1.875rem -0.9375rem;
-  grid-area: 1 / 6 / -1 / -1;
+  grid-area: 1 / 7 / -1 / -1;
   position: relative;
   z-index: 1;
   opacity: 0.7;
@@ -153,19 +152,7 @@ const ProjectDescription = styled.p`
   }
 `;
 
-const ProjectStack = styled.code`
-  padding: 1rem 1rem;
-  padding-left: 0rem;
-  height: 4rem;
-  color: white;
-  z-index: 1;
-  @media ${device.md} {
-    padding: 1rem 0rem;
-  }
-`;
-
 const ProjectLinks = styled.div`
-  margin-top: 1.25rem;
   display: flex;
   align-items: center;
   position: relative;

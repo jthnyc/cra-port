@@ -1,15 +1,15 @@
 {
     "title": "Projects",
     "p1": "YearOne Ratings",
-    "p1-descriptor": "YearOne Ratings is a dynamic single-page application built with React, JavaScript, HTML, and CSS, enabling users to search and rate movies seamlessly. Powered by the OMDB API, it provides real-time movie data, while Vercel ensures fast and reliable deployment. Designed for an intuitive user experience, YearOne Ratings offers a sleek and responsive interface for film enthusiasts.",
+    "p1-descriptor": "A single-page application that allows users to search and rate movies in real time using the OMDB API. Built with React, JavaScript, HTML, and CSS to ensure a seamless and intuitive user experience. Deployed on Vercel for fast performance and scalability.",
     "p1-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
     "p2": "The Shoppies",
-    "p2-descriptor": "The Shoppies is a sleek, single-page application built with React, JavaScript, HTML, and CSS, allowing users to search for movies and nominate their top five favorites. Leveraging the OMDB API for real-time movie data and deployed on Vercel for fast performance, The Shoppies delivers a smooth and engaging user experience for film enthusiasts.",
+    "p2-descriptor": "Designed and built a single-page application where users can search for movies and nominate their top five favorites. Leveraged OMDB API to provide real-time movie data and React for an optimized interactive experience. Hosted on Vercel to ensure fast load times and a responsive user interface.",
     "p2-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
     "p3": "Wanderlust",
-    "p3-descriptor": "Wanderlust is a user-friendly web application designed for travelers to book rentals and connect with fellow adventurers. Built with React, JavaScript, HTML, and CSS, it offers a seamless booking experience with a sleek interface. Deployed on Vercel for optimal performance, Wanderlust simplifies travel planning by fostering a community-driven rental experience.",
+    "p3-descriptor": "A web application that allows travelers to book rentals and connect with fellow adventurers. Built using React, JavaScript, HTML, and CSS to create a seamless and user-friendly booking experience. Deployed on Vercel for optimized performance and reliability.",
     "p3-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
     "p4": "LaLaLime",
-    "p4-descriptor": "LaLaLime is a modern e-commerce platform specializing in athletic apparel, offering a seamless shopping experience. Built with React, JavaScript, HTML, and CSS, it features a sleek UI and smooth navigation. Deployed on Vercel for fast and reliable performance, LaLaLime delivers a dynamic and responsive online retail experience for fitness enthusiasts.",
+    "p4-descriptor": "Built a modern e-commerce website specializing in athletic apparel, featuring a sleek and intuitive shopping experience. Developed using React, JavaScript, HTML, and CSS, ensuring smooth navigation and responsive design. Hosted on Vercel to provide a fast and scalable online retail solution.",
     "p4-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel"
 }
