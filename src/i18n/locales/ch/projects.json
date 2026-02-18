@@ -1,15 +1,30 @@
 {
-    "title": "作品",
-    "p1": "YearOne 電影評分",
-    "p1-descriptor": "一款讓使用者能夠即時搜尋並評分電影的單頁應用程式，整合 OMDB API 提供即時數據。使用 React、JavaScript、HTML 和 CSS 打造直觀的使用者介面，提升流暢度與易用性。部署於 Vercel，確保高效能與可擴展性。",
-    "p1-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    "p2": "The Shoppies 獎",
-    "p2-descriptor": "設計並開發一款單頁應用程式，讓使用者能夠搜尋電影並提名最喜愛的五部作品。整合 OMDB API 提供即時電影資訊，並利用 React 打造流暢的互動體驗。部署於 Vercel，確保快速載入與響應式 UI 設計。",
-    "p2-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    "p3": "Wanderlust 旅心",
-    "p3-descriptor": "一款專為旅人設計的網頁應用程式，讓旅行者能夠輕鬆預訂租賃房源並與其他旅行者建立聯繫。 使用 React、JavaScript、HTML 和 CSS 創建流暢且直觀的預訂體驗，部署於 Vercel，以提升效能與穩定性，讓旅行規劃更加便利。",
-    "p3-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    "p4": "LaLaLime 商場",
-    "p4-descriptor": "一個專為運動服飾設計的電子商務網站，提供流暢且直觀的購物體驗。採用 React、JavaScript、HTML 和 CSS 開發，確保流暢的操作與響應式設計。部署於 Vercel，提供快速且可擴展的線上購物解決方案。",
-    "p4-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel"
+    "title": "專案",
+    "p1": "SceneSync",
+    "p1-descriptor": "電影剪輯師和作曲家經常花費數小時尋找臨時配樂——有時只是為了替 20 秒的場景配樂。我正在探索 AI 是否能透過分析音訊特徵來預測音軌適合哪種場景類型。目前，SceneSync 是一個學習專案。你上傳一段免版稅音軌，它會分析節奏、調性、動態和音色，建議場景類型：動作、浪漫、緊張、懸疑。你可以看到模型如何詮釋音樂，但還沒有實際用途——沒有音樂庫整理、沒有「尋找相似音軌」、沒有匯出功能。這是我在探索這個方法是否可行。我從小就著迷於音樂如何塑造場景——《湯姆貓與傑利鼠》的滑稽混亂、吉卜力工作室和皮克斯配樂的情感精準度。我想知道這些模式是否能被量化。實話實說：只有 20 首訓練音軌，模型準確率約為 50%。技術實作運作順暢（React/TypeScript/Tailwind、Web Workers 音訊提取），但我發現「這感覺像追逐場景」無法輕易對應到可提取的特徵。我建立這個專案是為了理解基於音訊特徵的搜尋是否能與現有分類標籤有所不同，並了解真正的挑戰在哪裡。",
+    "p1-stack": "React、TypeScript、Tailwind CSS、TensorFlow.js、Web Audio API、Web Workers",
+    "p1-status": "進行中",
+    "p1-link": "https://scene-sync-sepia.vercel.app",
+    "p1-github": "https://github.com/jthnyc/scene-sync",
+    
+    "p2": "光華高工",
+    "p2-subtitle": "數位轉型專案",
+    "p2-descriptor": "2025年，我主導了光華高工為期九個月的數位轉型專案——這是我祖父於 1951 年創辦的七十年歷史學校。台灣的私立高職面臨招生人數下滑與政府管制壓力，而學校過時的網站無助於改善現況。我負責整個改版專案的管理：從舊有系統遷移至 WordPress/Elementor（架設於 Google Cloud Platform），與設計師 Genie 的團隊協調合作，並跨部門（招生、教務、校友會）溝通，讓學校能以更現代化的形象呈現。這個挑戰不僅是技術層面——更是如何在組織文化中找到平衡、協調不同利益關係人的優先順序，並建立一個在我離開後，團隊仍能長期維護的系統。網站於 2025 年 9 月上線。它不華麗，但實用，更重要的是，學校職員能夠自行維護管理。",
+    "p2-stack": "WordPress、Elementor、Google Cloud Platform、專案管理",
+    "p2-status": "已上線",
+    "p2-link": "https://www.khvs.tc.edu.tw/",
+    
+    "p3": "PollyGlot",
+    "p3-descriptor": "我在義大利和西班牙旅行後建立了 PollyGlot，當時 Duolingo 讓我失望了。我花了好幾週學習在對話中永遠不會用到的片語——同時，我卻不知道如何向當地人詢問餐廳推薦，而不會顯得太正式或不小心失禮。Google 翻譯給你詞彙，但無法幫你掌握語氣。PollyGlot 讓你在翻譯前指定情境：正式、友善或俚語。需要向街頭攤販詢問他們的產品？選擇友善。寫電子郵件給教授？正式。想和 Airbnb 房東開玩笑？俚語。它支援 10 種語言，包括義大利語、德語、日語、普通話，當然還有克林貢語和世界語（因為有些實驗就是為了好玩而存在）。這個應用程式使用 OpenAI 的 API 進行翻譯和語氣調整。它不是要取代人類翻譯——文化差異很難掌握——但它在直接翻譯和實際對話之間架起橋樑。",
+    "p3-stack": "React、Node.js、Express、OpenAI API、CSS",
+    "p3-status": "已上線",
+    "p3-link": "https://pollyglot.onrender.com/",
+    "p3-github": "https://github.com/jthnyc/pollyglot",
+    
+    "p4": "The Shoppies",
+    "p4-descriptor": "設計並建立了一個單頁應用程式，讓使用者可以搜尋電影並提名他們最喜歡的五部電影。利用 OMDB API 提供即時電影資料，並使用 React 打造優化的互動體驗。",
+    "p4-stack": "React、JavaScript、CSS、HTML、OMDB API",
+    "p4-status": "已上線",
+    "p4-link": "https://movie-nom-app.vercel.app/",
+    "p4-github": "https://github.com/jthnyc/movie-nom-app"
 }

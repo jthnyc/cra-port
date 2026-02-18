@@ -1,15 +1,30 @@
 {
     "title": "Projects",
-    "p1": "YearOne Ratings",
-    "p1-descriptor": "A single-page application that allows users to search and rate movies in real time using the OMDB API. Built with React, JavaScript, HTML, and CSS to ensure a seamless and intuitive user experience. Deployed on Vercel for fast performance and scalability.",
-    "p1-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    "p2": "The Shoppies",
-    "p2-descriptor": "Designed and built a single-page application where users can search for movies and nominate their top five favorites. Leveraged OMDB API to provide real-time movie data and React for an optimized interactive experience. Hosted on Vercel to ensure fast load times and a responsive user interface.",
-    "p2-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    "p3": "Wanderlust",
-    "p3-descriptor": "A web application that allows travelers to book rentals and connect with fellow adventurers. Built using React, JavaScript, HTML, and CSS to create a seamless and user-friendly booking experience. Deployed on Vercel for optimized performance and reliability.",
-    "p3-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel",
-    "p4": "LaLaLime",
-    "p4-descriptor": "Built a modern e-commerce website specializing in athletic apparel, featuring a sleek and intuitive shopping experience. Developed using React, JavaScript, HTML, and CSS, ensuring smooth navigation and responsive design. Hosted on Vercel to provide a fast and scalable online retail solution.",
-    "p4-stack": "React, JavaScript, CSS, HTML, OMDB API, Vercel"
+    "p1": "SceneSync",
+    "p1-descriptor": "Film editors and composers spend hours searching for temp music — sometimes just to score 20 seconds of a scene. I'm exploring whether AI could help by analyzing audio features to predict what type of scene a track might work for. Right now, SceneSync is a learning project. You upload a royalty-free audio track, and it analyzes tempo, key, dynamics, and timbre to suggest scene types: action, romance, tension, suspense. You can see how the model interprets the music, but there's nothing actionable yet — no library organization, no 'find similar tracks,' no export. It's me figuring out if this approach has merit. I'm coming at this as someone who grew up obsessed with how music shapes scenes — the slapstick chaos of Tom and Jerry, the emotional precision of Studio Ghibli and Pixar scores. I wanted to see if those patterns could be quantified. Full transparency: with 20 training tracks, the model sits at 50% accuracy. The technical implementation works smoothly (React/TypeScript/Tailwind, Web Workers for audio extraction), but I'm learning that 'this feels like a chase scene' doesn't easily map to extractable features. I'm building this to understand whether audio-feature-based search could work differently than existing category tags, and to learn where the real challenges are.",
+    "p1-stack": "React, TypeScript, Tailwind CSS, TensorFlow.js, Web Audio API, Web Workers",
+    "p1-status": "In Progress",
+    "p1-link": "https://scene-sync-sepia.vercel.app",
+    "p1-github": "https://github.com/jthnyc/scene-sync",
+    
+    "p2": "Kuang-Hwa Vocational Senior High School",
+    "p2-subtitle": "Digital Transformation",
+    "p2-descriptor": "In 2025, I led a 9-month digital transformation for Kuang-hwa Vocational High School — a 70-year-old institution my grandfather founded in 1951. Taiwan's private vocational schools face enrollment decline and government pressure. The school's outdated website wasn't helping. I project-managed a complete overhaul: migrating from a legacy system to WordPress/Elementor on Google Cloud Platform, coordinating with designer Genie's team, and working across departments (admissions, academics, alumni relations) to modernize how the school presents itself. The challenge wasn't just technical — it was navigating institutional culture, balancing stakeholder priorities, and building something sustainable for a team that would maintain it long after I stepped away. The site launched in September 2025. It's not flashy, but it works, and more importantly, it's maintainable by the staff who will own it going forward.",
+    "p2-stack": "WordPress, Elementor, Google Cloud Platform, Project Management",
+    "p2-status": "Shipped",
+    "p2-link": "https://www.khvs.tc.edu.tw/",
+    
+    "p3": "PollyGlot",
+    "p3-descriptor": "I built PollyGlot after trips to Italy and Spain where Duolingo failed me. I'd spent weeks learning phrases I'd never actually use in conversation — meanwhile, I couldn't figure out how to ask a local for restaurant recommendations without sounding either too formal or accidentally rude. Google Translate gives you words, but it doesn't help you navigate tone. PollyGlot lets you specify context before translating: formal, friendly, or slang. Need to ask a street vendor about their produce? Choose friendly. Writing an email to a professor? Formal. Trying to joke with your Airbnb host? Slang. It supports 10 languages including Italian, German, Japanese, Mandarin, and yes, Klingon and Esperanto (because why not for fun). The app uses OpenAI's API for translation and tone adjustment. It's not replacing human translators — cultural nuance is hard — but it bridges the gap between direct translation and actual conversation.",
+    "p3-stack": "React, Node.js, Express, OpenAI API, CSS",
+    "p3-status": "Shipped",
+    "p3-link": "https://pollyglot.onrender.com/",
+    "p3-github": "https://github.com/jthnyc/pollyglot",
+    
+    "p4": "The Shoppies",
+    "p4-descriptor": "Designed and built a single-page application where users can search for movies and nominate their top five favorites. Leveraged OMDB API to provide real-time movie data and React for an optimized interactive experience.",
+    "p4-stack": "React, JavaScript, CSS, HTML, OMDB API",
+    "p4-status": "Shipped",
+    "p4-link": "https://movie-nom-app.vercel.app/",
+    "p4-github": "https://github.com/jthnyc/movie-nom-app"
 }

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "../device";
 import { GitHub, Linkedin, AtSign } from "react-feather";
+import { SpotifyVinyl } from './index';
 
 export default function Navbar() {
   return (
@@ -16,6 +17,7 @@ export default function Navbar() {
             <AtSign />
           </a>
       </SidebarList>
+      <SpotifyVinyl />
     </SidebarContainer>
   );
 }
@@ -27,6 +29,10 @@ const SidebarContainer = styled.div`
   right: auto;
   bottom: 0;
   z-index: 10;
+  
+  @media ${device.sm} {
+    display: none;
+  }
 `;
 
 const SidebarList = styled.ul`

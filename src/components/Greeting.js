@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { device } from "../device";
 import { wavinghand } from "../images";
 
 const Greeting = () => {
@@ -21,25 +22,49 @@ const Greeting = () => {
     return () => clearInterval(interval);
   });
 
-  return <GreetingText><WavingHand src={wavinghand} alt="waving hand icon"/>{greetings[index]}</GreetingText>;
+  return (
+    <GreetingText>
+      <WavingHand src={wavinghand} alt="waving hand icon"/>
+      {greetings[index]}
+    </GreetingText>
+  );
 };
 
 export default Greeting;
 
-const GreetingText = styled.code`
+const GreetingText = styled.p`
   opacity: 1;
-  font-size: 16px;
+  font-size: 1.125rem;
+  color: var(--cyan);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.02em;
   animation: fade-in-out 3s ease-in-out infinite;
 
   @keyframes fade-in-out {
-    0% { opacity: 0; }    /* Start hidden */
-    20% { opacity: 1; }   /* Fade in */
-    80% { opacity: 1; }   /* Stay visible */
-    100% { opacity: 0; }  /* Fade out before switching */
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @media ${device.md} {
+    font-size: 1rem;
+  }
+  
+  @media ${device.sm} {
+    font-size: 0.9375rem;
   }
 `;
 
 const WavingHand = styled.img`
-  max-width: 1.25rem;
-  margin-right: 0.375rem;
+  max-width: 1.375rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+  vertical-align: middle;
+  
+  @media ${device.sm} {
+    max-width: 1.25rem;
+  }
 `;

@@ -1,4 +1,4 @@
-export { default as Navbar } from "./Navigation";
+export { default as Navigation } from "./Navigation";
 export { default as LanguageSwitcher } from './LanguageSwitcher';
 export { default as Intro } from "./Intro";
 export { default as Greeting } from './Greeting';
@@ -7,3 +7,6 @@ export { default as Sidebar } from "./Sidebar";
 export { default as Projects } from "./Projects";
 export { default as Contact } from "./Contact";
 export { default as Footer } from "./Footer";
+export { default as FrequencyBars } from './FrequencyBars';
+export { default as SpotifyVinyl} from './SpotifyVinyl';
+export { default as ScrollIndicator } from './ScrollIndicator';

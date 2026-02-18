@@ -27,6 +27,7 @@ const SwitchButton = styled.button`
   bottom: 1.25rem;
   right: 1.25rem;
   min-width: 3.125rem;
+  z-index: 1001;  /* Added this - higher than nav (1000) */
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 

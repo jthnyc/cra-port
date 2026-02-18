@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { device } from "./device";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-  Navbar,
+  ScrollIndicator,
+  Navigation,
   LanguageSwitcher,
   Intro,
   About,
@@ -18,10 +19,9 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <div>
-        <Header>
-          <Navbar />
-          <LanguageSwitcher />
-        </Header>
+        <Navigation />
+        <ScrollIndicator />
+        <LanguageSwitcher />
         <Sidebar />
         <Main>
           <Intro />
@@ -37,23 +37,28 @@ function App() {
 
 export default App;
 
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--offwhite);
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-`;
-
 const Main = styled.main`
-  background-color: var(--prussianblue);
+  background: linear-gradient(135deg, var(--prussianblue-dark) 0%, var(--prussianblue) 50%, var(--prussianblue-light) 100%);
   padding: 0 10rem;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(78, 205, 196, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
   & > section {
-    background-color: var(--prussianblue);
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,10 +67,14 @@ const Main = styled.main`
     color: #edf5e1;
     padding: 0rem;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    
     &:not(:last-of-type) {
       margin-bottom: 3.5rem;
     }
   }
+  
   @media ${device.sm} {
     padding: 0 1.5rem;
     & > section {

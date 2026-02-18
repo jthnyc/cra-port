@@ -1,170 +1,264 @@
-import styled from "styled-components";
-import { device } from "../device";
-import { GitHub, ExternalLink } from "react-feather";
+import { useState } from 'react';
+import styled from 'styled-components';
+import { ExternalLink, GitHub } from 'react-feather';
+import { device } from '../device';
 
-const Project = ({ title, img, description, github, link }) => {
+const Project = ({ img, title, description, stack, link, github, status }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const renderDescription = () => {
+    const parts = description.split(/(?<=\.)\s+/);
+    
+    return parts.map((sentence, index) => {
+      let color = 'var(--white)';
+      if (index < 2) {
+        color = 'var(--lightorange)';
+      } else if (sentence.includes('Full transparency') || sentence.includes('%')) {
+        color = 'var(--coral)';
+      }
+      
+      return (
+        <Sentence key={index} $color={color}>
+          {sentence}
+        </Sentence>
+      );
+    });
+  };
+
   return (
-    <ProjectContainer>
-      <ProjectContent>
-        <ProjectDetails>
+    <ProjectCard 
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+      $isExpanded={isExpanded}
+    >
+      <ImageLayer $isExpanded={isExpanded}>
+        <ProjectImage src={img} alt={title} $isExpanded={isExpanded} />
+        {status && <StatusBadge $isExpanded={isExpanded}>{status}</StatusBadge>}
+        
+        {/* Show links on image when expanded */}
+        <ImageLinks $isExpanded={isExpanded}>
+          {link && (
+            <ImageLink href={link} target="_blank" rel="noopener noreferrer" title="View Project">
+              <ExternalLink size={24} />
+            </ImageLink>
+          )}
+          {github && (
+            <ImageLink href={github} target="_blank" rel="noopener noreferrer" title="View Code">
+              <GitHub size={24} />
+            </ImageLink>
+          )}
+        </ImageLinks>
+      </ImageLayer>
+      
+      <ContentLayer $isExpanded={isExpanded}>
+        <TitleRow>
           <ProjectTitle>{title}</ProjectTitle>
-          <ProjectLinks>
-            <a href={github} target="_blank" rel="noreferrer noopener">
-              <GitHub />
-            </a>
-            <a href={link} target="_blank" rel="noreferrer noopener">
-              <ExternalLink />
-            </a>
-          </ProjectLinks>
-        </ProjectDetails>
-        <ProjectDescription>{description}</ProjectDescription>
-      </ProjectContent>
-      <ProjectImageContainer>
-        <a href={link} target="_blank" rel="noreferrer noopener">
-          <ProjectImage src={img} alt={img} />
-        </a>
-      </ProjectImageContainer>
-    </ProjectContainer>
+          <MobileLinks>
+            {link && (
+              <MobileLink href={link} target="_blank" rel="noopener noreferrer" title="View Project">
+                <ExternalLink size={20} />
+              </MobileLink>
+            )}
+            {github && (
+              <MobileLink href={github} target="_blank" rel="noopener noreferrer" title="View Code">
+                <GitHub size={20} />
+              </MobileLink>
+            )}
+          </MobileLinks>
+        </TitleRow>
+        <ProjectDescription>
+          {renderDescription()}
+        </ProjectDescription>
+        
+        <TechStack>{stack}</TechStack>
+      </ContentLayer>
+    </ProjectCard>
   );
 };
 
 export default Project;
 
-const ProjectContainer = styled.li`
+const ProjectCard = styled.li`
   position: relative;
-  display: grid;
-  grid-auto-flow: dense;
-  grid-template-columns: repeat(12, 1fr);
-  align-items: center;
-  gap: 0.625rem;
-  & > a {
-    margin: 1rem 1rem;
-    transition: all 0.125s ease;
-    color: #edf5e1;
-    &:hover {
-      color: #ff7f11;
-    }
-  }
-  &:not(:last-child) {
-    margin-bottom: 5rem;
-  }
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(4, 56, 108, 0.3);
+  border: 1px solid rgba(92, 225, 230, 0.1);
+  margin-bottom: 2rem;
+  cursor: default;  /* Changed from pointer */
   
-  &:nth-child(2n + 2)>div:first-child {
-    grid-area: 1 / 9 / -1 / -1;
-  }
-
-  &:nth-child(2n + 2)>div:nth-child(2) {
-    grid-area: 1 / 1 / -1 / 7;
-  }
-
-  @media ${device.lg} {
-    &:nth-child(2n + 2)>div:first-child {
-      grid-area: 1 / 7 / -1 / -1;
-    }
-  }
-
-  @media ${device.md} {
-    &:nth-child(2n + 2)>div:first-child {
-      grid-area: 1 / 1 / 1 / 11;
-      z-index: 10;
-      margin-left: 0.9375rem;
-    }
-
-    &:nth-child(2n + 2)>div:nth-child(2) {
-      grid-area: 1 / 1 / -1 / -1;
-      z-index: 1;
-      opacity: 0.3;
-    }
+  @media ${device.sm} {
+    height: auto;
+    min-height: 400px;
   }
 `;
 
-const ProjectContent = styled.div`
-  position: relative;
-  grid-area: 1 / 1 / -1 / 6;
-  @media ${device.lg} {
-    grid-area: 1 / 1 / 1 / 11;
-    z-index: 10;
-    margin-left: 0.9375rem;
-  }
-`;
-
-const ProjectDetails = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const ProjectImageContainer = styled.div`
-  grid-column: 1/8;
-  box-shadow: 0 0.625rem 1.875rem -0.9375rem;
-  grid-area: 1 / 7 / -1 / -1;
-  position: relative;
-  z-index: 1;
-  opacity: 0.7;
-  &:hover {
-    opacity: 1;
-  }
-
-  @media ${device.md} {
-    grid-area: 1 / 1 / -1 / -1;
-    z-index: 1;
-    opacity: 0.3;
+const ImageLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${props => props.$isExpanded ? '40%' : '100%'};
+  height: 100%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  opacity: ${props => props.$isExpanded ? '0.4' : '1'};  /* Fade when expanded */
+  
+  @media ${device.sm} {
+    position: relative;
+    width: 100% !important;
+    height: 250px;
+    opacity: 1 !important;
   }
 `;
 
 const ProjectImage = styled.img`
-  max-width: 120%;
-  z-index: 9;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* Changed from cover to contain */
+  object-position: center;
+  background: rgba(0, 0, 0, 0.2);  /* Subtle background for letterboxing */
+`;
 
-  @media ${device.md} {
-    max-width: 100%;
+const StatusBadge = styled.span`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: ${props => props.$isExpanded ? 'rgba(92, 225, 230, 0.2)' : 'rgba(92, 225, 230, 0.15)'};
+  color: var(--cyan);
+  border: 1px solid rgba(92, 225, 230, 0.3);
+  padding: 0.375rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+`;
+
+const ImageLinks = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 1.5rem;
+  opacity: ${props => props.$isExpanded ? '1' : '0'};
+  pointer-events: ${props => props.$isExpanded ? 'auto' : 'none'};
+  transition: opacity 0.3s ease 0.2s;  /* Delay appearance */
+  z-index: 10;
+  
+  @media ${device.sm} {
+    display: none;
+  }
+`;
+
+const ImageLink = styled.a`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--cyan-dark);
+  color: var(--prussianblue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  
+  &:hover {
+    background: var(--cyan);
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px var(--cyan);
+  }
+`;
+
+const ContentLayer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: ${props => props.$isExpanded ? '60%' : '100%'};
+  height: 100%;
+  padding: 2rem;
+  opacity: ${props => props.$isExpanded ? '1' : '0'};
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  background: linear-gradient(to right, transparent, rgba(4, 56, 108, 0.95) 10%);
+  pointer-events: ${props => props.$isExpanded ? 'auto' : 'none'};
+  
+  @media ${device.sm} {
+    position: relative;
+    width: 100% !important;
+    opacity: 1;
+    padding: 1.5rem;
+    background: transparent;
+    pointer-events: auto;
   }
 `;
 
 const ProjectTitle = styled.h3`
-  font-size: 1.2em;
-  margin: 1.25rem 0rem;
+  font-size: 1.75rem;
+  color: var(--cyan);
+  margin: 0;
+`;
+
+const ProjectDescription = styled.div`
   display: flex;
-  color: var(--lightorange);
-  z-index: 1;
+  flex-direction: column;
+  gap: .5rem;
+  line-height: 1.7;
+  font-size: 0.9375rem;
+`;
 
-  @media ${device.sm} {
-    margin: .5rem 0;
+const Sentence = styled.span`
+  color: ${props => props.$color};
+  display: block;
+  
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
   }
 `;
 
-const ProjectDescription = styled.p`
-  padding: 0rem 1rem 2rem;
-  padding-left: 0rem;
-  height: 4rem;
-  width: 120%;
-  color: white;
-  z-index: 1;
-
-  @media ${device.md} {
-    padding: 0rem 1rem 1rem;
-    padding-left: 0rem;
-  }
-
-  @media ${device.sm} {
-    margin-bottom: 1.5rem;
-    padding: 0;
-    height: 2rem;
-  }
+const TechStack = styled.p`
+  font-size: 0.875rem;
+  color: var(--white);
+  opacity: 0.7;
+  margin-top: auto;
+  font-style: italic;
 `;
 
-const ProjectLinks = styled.div`
+const TitleRow = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
-  & > a {
-    color: white;
-    padding: 0.625rem 0.625rem 0.625rem 0rem;
-    &:hover {
-      color: #ff7f11;
-    }
-  }
-
+  justify-content: space-between;
+  gap: 1rem;
+  
   @media ${device.sm} {
-    margin-top: .5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+`;
+
+const MobileLinks = styled.div`
+  display: none;
+  
+  @media ${device.sm} {
+    display: flex;
+    gap: 1rem;
+  }
+`;
+
+const MobileLink = styled.a`
+  color: var(--cyan);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: var(--coral);
+    transform: scale(1.1);
   }
 `;

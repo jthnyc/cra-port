@@ -23,12 +23,6 @@ export const About = () => {
           <p>
             <Trans i18nKey="p3" ns="about" components={[<strong key="2" />, <strong key="3" />]} />
           </p>
-          <p>
-            <Trans i18nKey="p4" ns="about" components={[<strong key="4" />, <strong key="5" />, <strong key="6" />, <strong key="7" />, <strong key="8" />, <strong key="9" />, <strong key="10" />]} />
-          </p>
-          <p>
-            <Trans i18nKey="p5" ns="about" components={[<strong key="11" />, <strong key="12" />]} />
-          </p>
           <br></br>
           <h3>🛠 {t("subheader")}</h3>
           <TechList>
@@ -97,6 +91,22 @@ const AboutContent = styled.div`
 const AboutText = styled.div`
   @media ${device.lg} {
     margin-bottom: 3.125rem;
+  }
+  
+  & p {
+    margin-top: 1.5rem;
+    line-height: 1.75;
+    color: rgba(237, 245, 225, 0.95);
+    
+    &:first-of-type {
+      font-size: 1.125rem;
+      color: var(--white);
+    }
+  }
+  
+  & strong {
+    color: var(--cyan);
+    font-weight: 600;
   }
 `;
 
