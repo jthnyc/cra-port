@@ -10,3 +10,4 @@ export { default as Footer } from "./Footer";
 export { default as FrequencyBars } from './FrequencyBars';
 export { default as SpotifyVinyl} from './SpotifyVinyl';
 export { default as ScrollIndicator } from './ScrollIndicator';
+export { default as SkillConstellation } from './SkillConstellation';

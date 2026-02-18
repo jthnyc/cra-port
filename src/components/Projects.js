@@ -55,7 +55,7 @@ export const Projects = () => {
       <h2>{t("title")}</h2>
       <ProjectsContainer>
         {projects.map((project) => (
-          <Project {...project} key={project.id} />
+          <Project {...project} key={project.id} id={`project-${project.id}`} />
         ))}
       </ProjectsContainer>
     </ProjectSection>

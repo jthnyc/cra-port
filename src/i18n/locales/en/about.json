@@ -1,21 +1,14 @@
 {
     "title": "About Me",
     "p1": "Hey there! I'm Joanna—a frontend engineer whose path into tech started in the music classroom, not the code editor.",
-    "p2": "Most recently, I led the 9-month digital transformation for Kuang-hwa Vocational High School, a 70-year-old institution my grandfather founded. I project-managed a complete website overhaul—migrating from a legacy system to WordPress/Elementor on GCP, coordinating with designers and stakeholders to modernize how the school presents itself during a challenging enrollment period.",
-    "p3": "Before that: music teaching → iOS development → MusicFirst (music ed startup, boosted renewals 21.9% through onboarding redesign) → Teachable (connected user feedback to engineering) → Grace Hopper → BORN Group (production-scale React/Redux for Converse, mentored junior devs). Each role pulled me deeper into the technical side, but also further from education and music. Now I'm building projects that combine all of it: SceneSync (film music classifier), PollyGlot (context-aware translation). Testing whether this intersection is where I should be.",
-    "highlight_companies": ["MusicFirst", "Teachable", "Grace Hopper", "BORN Group", "Kuang-hwa Vocational High School"],
+    "p2": "Most recently, I led the 9-month digital transformation for Kuang-Hwa Vocational Senior High School, a 70-year-old institution my grandfather founded. I project-managed a complete website overhaul—migrating from a legacy system to WordPress/Elementor on GCP, coordinating with designers and stakeholders to modernize how the school presents itself during a challenging enrollment period.",
+    "p3-highlight": "The journey from music classroom to production engineering wasn't linear, but the thread is clear: I've always been drawn to tools that help people learn, create, or communicate.",
+    "p3": "At MusicFirst, I redesigned onboarding that boosted renewals 21.9%. At Teachable, I turned user feedback into actionable engineering priorities, shaping what the product team built. At BORN Group, I built production React/Redux for Converse and mentored junior developers—made me a better engineer, but the connection to education and music felt distant. Now I'm testing whether that intersection is where I belong: SceneSync (film music classifier) and PollyGlot (context-aware translation) are experiments in building tools that feel both technically interesting and personally meaningful.",
+    "highlight_companies": ["MusicFirst", "Teachable", "Grace Hopper", "BORN Group"],
     "highlight_metrics": ["21.9%", "9-month"],
-    "subheader": "Technologies I Work With",
-    "subtext1": "Frontend",
-    "list1-1": "React, Redux, Context API, TypeScript",
-    "list1-2": "JavaScript (ES6+)",
-    "list1-3": "HTML, CSS, Tailwind",
-    "subtext2": "Backend & Data",
-    "list2-1": "Node.js, Express.js",
-    "list2-2": "RESTful APIs",
-    "list2-3": "PostgreSQL, TensorFlow.js",
-    "subtext3": "Dev & Build Tools",
-    "list3-1": "Git, Webpack, Vite",
-    "list3-2": "Vercel, Heroku",
-    "list3-3": "Web Audio API, Web Workers"
+    "highlight_projects": [
+        {"name": "Kuang-Hwa Vocational Senior High School", "anchor": "#project-2"},
+        {"name": "SceneSync", "anchor": "#project-1"},
+        {"name": "PollyGlot", "anchor": "#project-3"}
+    ]
 }

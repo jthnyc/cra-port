@@ -3,17 +3,35 @@ import styled from 'styled-components';
 import { ExternalLink, GitHub } from 'react-feather';
 import { device } from '../device';
 
-const Project = ({ img, title, description, stack, link, github, status }) => {
+const Project = ({ id, img, title, description, stack, link, github, status }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const renderDescription = () => {
-    const parts = description.split(/(?<=\.)\s+/);
+    // Detect if Chinese by checking for Chinese characters
+    const isChinese = /[\u4e00-\u9fa5]/.test(description);
+    
+    // Split by appropriate sentence delimiter
+    const parts = isChinese 
+      ? description.split(/(?<=。)\s*/) 
+      : description.split(/(?<=\.)\s+/);
     
     return parts.map((sentence, index) => {
       let color = 'var(--white)';
+      
+      // First ~2 sentences = problem (lighter orange/coral)
       if (index < 2) {
         color = 'var(--lightorange)';
-      } else if (sentence.includes('Full transparency') || sentence.includes('%')) {
+      } 
+      // Sentences with transparency/metrics = status (coral)
+      else if (
+        sentence.includes('Full transparency') || 
+        sentence.includes('完整透明度') ||
+        sentence.includes('%') ||
+        sentence.includes('Launched') ||
+        sentence.includes('已上線') ||
+        sentence.includes('Shipped') ||
+        sentence.includes('已發布')
+      ) {
         color = 'var(--coral)';
       }
       
@@ -27,6 +45,7 @@ const Project = ({ img, title, description, stack, link, github, status }) => {
 
   return (
     <ProjectCard 
+      id={id}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
       $isExpanded={isExpanded}
@@ -87,11 +106,13 @@ const ProjectCard = styled.li`
   background: rgba(4, 56, 108, 0.3);
   border: 1px solid rgba(92, 225, 230, 0.1);
   margin-bottom: 2rem;
-  cursor: default;  /* Changed from pointer */
+  cursor: default;
+  scroll-margin-top: 6rem;  /* Add this to offset for nav bar */
   
   @media ${device.sm} {
     height: auto;
     min-height: 400px;
+    scroll-margin-top: 4rem;
   }
 `;
 

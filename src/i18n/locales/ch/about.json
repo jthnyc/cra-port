@@ -2,20 +2,13 @@
     "title": "自我介紹",
     "p1": "嗨！我是黃子軒，一名前端工程師，我進入科技領域的路徑始於音樂教室，而非程式碼編輯器。",
     "p2": "最近，我主導了光華高工為期九個月的數位轉型專案——這是我祖父於 1951 年創辦的七十年歷史學校。我負責整個網站改版的專案管理：從舊有系統遷移至 WordPress/Elementor（架設於 Google Cloud Platform），與超能力工作室設計師 Genie 和團隊協調合作，並與各部門（招生、教務、校友會）溝通，讓學校能以更現代化的形象呈現。",
-    "p3": "在此之前：音樂教學 → iOS 開發 → MusicFirst（音樂教育新創公司，透過優化新手引導流程，將續約率提升 21.9%）→ Teachable（連結使用者回饋與工程團隊）→ Grace Hopper → BORN Group（為 Converse 開發生產級 React/Redux 專案，指導初級工程師）。每個角色都讓我在技術上更深入，但也讓我離教育和音樂越來越遠。現在我正在打造結合這一切的專案：SceneSync（電影音樂場景分類器）、PollyGlot（情境感知翻譯）。測試這個交會點是否是我該前往的方向。",
-    "highlight_companies": ["MusicFirst", "Teachable", "Grace Hopper", "BORN Group", "光華高工"],
+    "p3-highlight": "從音樂教室到生產級工程的旅程並非線性發展，但脈絡很清晰：我總是被那些幫助人們學習、創作或溝通的工具所吸引。",
+    "p3": "在 MusicFirst，我重新設計了新手引導流程，將續約率提升了 21.9%。在 Teachable，我將使用者回饋轉化為可執行的工程優先事項，影響產品團隊的開發方向。在 BORN Group，我為 Converse 開發了生產級的 React/Redux 專案，並指導初級工程師——讓我成為更好的工程師，但與教育和音樂的連結感覺遙遠。現在我正在測試這個交會點是否是我的歸屬：SceneSync（電影音樂分類器）和 PollyGlot（情境感知翻譯）是實驗性專案，既有技術趣味性，也具個人意義。",
+    "highlight_companies": ["MusicFirst", "Teachable", "Grace Hopper", "BORN Group"],
     "highlight_metrics": ["21.9%", "九個月"],
-    "subheader": "我使用的技術工具",
-    "subtext1": "前端",
-    "list1-1": "React、Redux、Context API、TypeScript",
-    "list1-2": "JavaScript (ES6+)",
-    "list1-3": "HTML、CSS、Tailwind",
-    "subtext2": "後端與資料",
-    "list2-1": "Node.js、Express.js",
-    "list2-2": "RESTful APIs",
-    "list2-3": "PostgreSQL、TensorFlow.js",
-    "subtext3": "開發與建置工具",
-    "list3-1": "Git、Webpack、Vite",
-    "list3-2": "Vercel、Heroku",
-    "list3-3": "Web Audio API、Web Workers"
+    "highlight_projects": [
+        {"name": "光華高工", "anchor": "#project-2"},
+        {"name": "SceneSync", "anchor": "#project-1"},
+        {"name": "PollyGlot", "anchor": "#project-3"}
+    ]
 }
