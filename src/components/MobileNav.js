@@ -83,7 +83,7 @@ const pulse = keyframes`
 
 const FloatingButton = styled.button`
   position: fixed;
-  bottom: 2rem;
+  top: 1.5rem;  /* Changed from bottom to top */
   left: 1.5rem;
   width: 56px;
   height: 56px;

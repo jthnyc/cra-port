@@ -44,7 +44,7 @@ export default App;
 
 const Main = styled.main`
   background: linear-gradient(135deg, var(--prussianblue-dark) 0%, var(--prussianblue) 50%, var(--prussianblue-light) 100%);
-  padding: 0 clamp(1rem, 4vw, 10rem);
+  padding: 0 clamp(1rem, 3vw, 2rem);  /* Mobile/tablet: conservative padding */
   width: 100%;
   min-height: 100vh;
   position: relative;
@@ -77,5 +77,9 @@ const Main = styled.main`
     &:not(:last-of-type) {
       margin-bottom: 3.5rem;
     }
+  }
+  
+  @media (min-width: 768px) {
+    padding: 0 clamp(3rem, 10vw, 10rem);  /* Desktop: more aggressive scaling */
   }
 `;

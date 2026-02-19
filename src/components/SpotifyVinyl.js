@@ -5,13 +5,13 @@ const SpotifyVinyl = () => {
 
   return (
     <VinylWrapper>
-      <TrackName>Current Favorites</TrackName>
       <VinylLink 
         href={playlistUrl}
         target="_blank"
         rel="noopener noreferrer"
         title="Listen to my film score favorites on Spotify"
       >
+        <TrackName>Current Favorites</TrackName>
         <VinylRecord>
           <VinylGroove />
           <VinylGroove style={{ width: '70%', height: '70%' }} />
@@ -51,11 +51,22 @@ const TrackName = styled.span`
   text-transform: uppercase;
   opacity: 0.6;
   transform: rotate(180deg);
+  transition: all 0.3s ease;
 `;
 
 const VinylLink = styled.a`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover ${TrackName} {
+    opacity: 1;
+    color: var(--coral);
+  }
 `;
 
 const VinylRecord = styled.div`
@@ -67,7 +78,7 @@ const VinylRecord = styled.div`
   animation: ${spin} 3s linear infinite;
   transition: all 0.3s ease;
   
-  &:hover {
+  ${VinylLink}:hover & {
     animation-duration: 1s;
     transform: scale(1.15);
     box-shadow: 0 0 15px rgba(92, 225, 230, 0.4);
