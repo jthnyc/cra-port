@@ -1,32 +1,67 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Menu, X } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import { device } from '../device';
+import { detectCurrentSection, getVisibleNavLinks } from '../utils/navigationHelpers';
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentSection, setCurrentSection] = useState('intro');
   const { t, i18n } = useTranslation('common');
+  const scrollPosition = useRef(0);
+  const isNavigating = useRef(false);  // Track if user clicked a nav link
 
-  // Lock body scroll when menu opens - fixed version
+  // Track current section on scroll - BUT ONLY when menu is closed
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      // Don't listen to scroll when menu is open (scroll position is fake due to fixed positioning)
+      return;
+    }
+
+    const handleScroll = () => {
+      setCurrentSection(detectCurrentSection(window.scrollY));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);  // Re-run when menu opens/closes
+
+  // Lock body scroll when menu opens - preserve scroll position
+  useEffect(() => {
+    if (isOpen) {
+      // Save current scroll position
+      scrollPosition.current = window.scrollY;
+      
+      // Lock body and maintain visual position
       document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition.current}px`;
       document.body.style.width = '100%';
-      document.body.style.height = '100%';
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = '';
+      // Restore scroll position ONLY if not navigating
+      const scrollY = scrollPosition.current;
       document.body.style.position = '';
+      document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.height = '';
+      document.body.style.overflow = '';
+      
+      // Only restore if user didn't click a nav link (just closed menu)
+      if (!isNavigating.current) {
+        window.scrollTo(0, scrollY);
+      }
+      
+      // Reset navigation flag
+      isNavigating.current = false;
     }
     
     return () => {
-      document.body.style.overflow = '';
       document.body.style.position = '';
+      document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.height = '';
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -35,35 +70,47 @@ const MobileNav = () => {
     i18n.changeLanguage(newLang);
   };
 
-  const handleNavClick = () => {
+  const handleNavClick = (e) => {
+    // Extract section id from href (e.g., "#about" -> "about", "#intro" -> "intro")
+    const href = e.currentTarget.getAttribute('href');
+    const sectionId = href.replace('#', '');
+    
+    // Set flag to indicate user is navigating (don't restore scroll)
+    isNavigating.current = true;
+    
+    // Update current section immediately
+    setCurrentSection(sectionId);
+    
+    // Close menu (browser will handle scrolling to the section)
     setIsOpen(false);
   };
 
   return (
     <>
-      <FloatingButton onClick={() => setIsOpen(true)}>
-        <Menu size={24} />
-      </FloatingButton>
+      <TopBanner>
+        <HamburgerButton onClick={() => setIsOpen(true)}>
+          <Menu size={24} />
+        </HamburgerButton>
+        <BannerLanguageToggle onClick={toggleLanguage}>
+          {i18n.language === 'en' ? '繁' : 'EN'}
+        </BannerLanguageToggle>
+      </TopBanner>
 
       <Overlay $isOpen={isOpen} onClick={() => setIsOpen(false)} />
 
       <SlideMenu $isOpen={isOpen}>
         <MenuContent>
           <NavLinks>
-            <NavLink href="#about" onClick={handleNavClick}>
-              {t('about')}
-            </NavLink>
-            <NavLink href="#projects" onClick={handleNavClick}>
-              {t('projects')}
-            </NavLink>
-            <NavLink href="#contact" onClick={handleNavClick}>
-              {t('contact')}
-            </NavLink>
+            {getVisibleNavLinks(currentSection, t).map((link) => (
+              <NavLink 
+                key={link.id}
+                href={link.href} 
+                onClick={handleNavClick}
+              >
+                {link.label}
+              </NavLink>
+            ))}
           </NavLinks>
-
-          <LanguageToggle onClick={toggleLanguage}>
-            {i18n.language === 'en' ? '繁體中文' : 'English'}
-          </LanguageToggle>
 
           <CloseButton onClick={() => setIsOpen(false)}>
             <X size={20} />
@@ -81,35 +128,63 @@ const pulse = keyframes`
   50% { transform: scale(1.05); }
 `;
 
-const FloatingButton = styled.button`
+const TopBanner = styled.div`
   position: fixed;
-  top: 1.5rem;  /* Changed from bottom to top */
-  left: 1.5rem;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--cyan);
-  border: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(4, 56, 108, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(92, 225, 230, 0.2);
   display: none;
   align-items: center;
-  justify-content: center;
-  color: var(--prussianblue-dark);
-  box-shadow: 0 4px 20px rgba(92, 225, 230, 0.4);
-  cursor: pointer;
+  justify-content: space-between;
+  padding: 0 1.5rem;
   z-index: 999;
-  transition: all 0.3s ease;
+  
+  @media ${device.desktop} {
+    display: flex;
+  }
+`;
+
+const HamburgerButton = styled.button`
+  background: transparent;
+  border: none;
+  color: var(--cyan);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
   
   &:hover {
+    color: var(--white);
     transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(92, 225, 230, 0.6);
   }
   
   &:active {
     animation: ${pulse} 0.3s ease;
   }
+`;
+
+const BannerLanguageToggle = styled.button`
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
   
-  @media ${device.sm} {
-    display: flex;
+  &:hover {
+    background: var(--cyan);
+    color: var(--prussianblue-dark);
   }
 `;
 
@@ -127,7 +202,7 @@ const Overlay = styled.div`
   transition: opacity 0.3s ease;
   touch-action: none;
   
-  @media (min-width: 577px) {
+  @media (min-width: 1071px) {
     display: none;
   }
 `;
@@ -169,7 +244,7 @@ const SlideMenu = styled.nav`
     pointer-events: none;
   }
   
-  @media (min-width: 577px) {
+  @media (min-width: 1071px) {
     display: none;
   }
 `;
@@ -194,37 +269,11 @@ const NavLink = styled.a`
   font-size: 1.75rem;
   font-weight: 600;
   padding: 0.75rem 0;
-  border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
   
   &:hover {
     color: var(--cyan);
-    border-bottom-color: var(--cyan);
     transform: translateX(8px);
-  }
-`;
-
-const LanguageToggle = styled.button`
-  background: var(--coral);
-  color: var(--prussianblue-dark);
-  border: none;
-  padding: 0.875rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  align-self: stretch;
-  
-  &:hover {
-    background: var(--cyan);
-    transform: scale(1.02);
-  }
-  
-  &:active,
-  &:focus {
-    background: var(--coral);
-    outline: none;
   }
 `;
 

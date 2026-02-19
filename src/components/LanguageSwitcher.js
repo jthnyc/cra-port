@@ -8,7 +8,7 @@ const LanguageSwitcher = () => {
 
   return (
     <SwitchButton onClick={() => i18n.changeLanguage(nextLang)}>
-      {i18n.language === "en" ? "繁" : "Eng"}
+      {i18n.language === "en" ? "繁" : "EN"}
     </SwitchButton>
   );
 };
@@ -40,8 +40,8 @@ const SwitchButton = styled.button`
   &:active {
     transform: translateY(0.125rem);
   }
-  
-  @media ${device.sm} {
+
+  @media ${device.desktop} {
     display: none;
   }
 `;

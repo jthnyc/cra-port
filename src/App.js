@@ -75,11 +75,15 @@ const Main = styled.main`
     z-index: 1;
     
     &:not(:last-of-type) {
-      margin-bottom: 3.5rem;
+      margin-bottom: 2rem;  /* Reduced from 3.5rem for mobile */
+      
+      @media (min-width: 768px) {
+        margin-bottom: 3.5rem;  /* Keep original spacing on desktop */
+      }
     }
   }
   
   @media (min-width: 768px) {
-    padding: 0 clamp(3rem, 10vw, 10rem);  /* Desktop: more aggressive scaling */
+    padding: 0 clamp(3rem, 8vw, 6rem);  /* Desktop: reduced max from 10rem to 6rem */
   }
 `;

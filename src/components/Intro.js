@@ -9,11 +9,11 @@ const Intro = () => {
   if (!ready) return <p>Loading translations...</p>;
 
   return (
-    <HeroSection>
+    <HeroSection id="intro">
       <HeroContent>
         <ProfileSection>
           <VinylAccent />
-          <ProfileImage src={profile} alt="Joanna Huang" />
+          <AlbumCover src={profile} alt="Joanna Huang" />
         </ProfileSection>
 
         <TextSection>
@@ -94,11 +94,11 @@ const ProfileSection = styled.div`
 
 const VinylAccent = styled.div`
   position: absolute;
-  top: 30%;
-  left: 30%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
   border-radius: 50%;
   background: 
     radial-gradient(circle at center, transparent 30%, rgba(92, 225, 230, 0.6) 30.5%, transparent 31%),
@@ -114,28 +114,49 @@ const VinylAccent = styled.div`
       rgba(92, 225, 230, 0.4) 360deg
     );
   animation: ${rotate} 20s linear infinite;
-  z-index: -1;
+  z-index: 0;
 `;
 
-const ProfileImage = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+const AlbumCover = styled.img`
+  width: 85%;
+  height: 85%;
+  aspect-ratio: 1;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center;
+  border-radius: 4px;
   border: 4px solid var(--cyan);
   box-shadow: 
     0 20px 60px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(92, 225, 230, 0.2);
+    0 0 40px rgba(92, 225, 230, 0.2),
+    inset 0 0 60px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
   
+  /* Album cover styling */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03) translateY(-4px);
     box-shadow: 
       0 25px 70px rgba(0, 0, 0, 0.5),
-      0 0 60px rgba(92, 225, 230, 0.3);
+      0 0 60px rgba(92, 225, 230, 0.3),
+      inset 0 0 60px rgba(0, 0, 0, 0.15);
   }
 `;
 

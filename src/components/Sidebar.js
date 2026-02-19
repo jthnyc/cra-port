@@ -23,14 +23,15 @@ export default function Navbar() {
 }
 
 const SidebarContainer = styled.div`
-  width: 4.5rem;
   position: fixed;
-  left: 1.25rem;
-  right: auto;
-  bottom: 0;
-  z-index: 10;
+  left: 2rem;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 100;
   
-  @media ${device.sm} {
+  @media ${device.desktop} {
     display: none;
   }
 `;

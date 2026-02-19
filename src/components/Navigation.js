@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { device } from "../device";
 import { useTranslation } from "react-i18next";
+import { detectCurrentSection, getVisibleNavLinks } from "../utils/navigationHelpers";
 
 const Navigation = () => {
   const { t } = useTranslation("common");
@@ -12,50 +12,40 @@ const Navigation = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       
-      // Show nav once user starts scrolling
-      if (scrollY > 100) {
+      // Only show nav if scrolled AND viewport is wide enough (desktop)
+      const isDesktopWidth = window.innerWidth > 1070;
+      if (scrollY > 100 && isDesktopWidth) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
 
-      // Detect current section
-      const sections = ['intro', 'about', 'projects', 'contact'];
-      const scrollPosition = scrollY + 200;
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setCurrentSection(section);
-            break;
-          }
-        }
+      // Detect current section using shared utility
+      setCurrentSection(detectCurrentSection(scrollY));
+    };
+
+    const handleResize = () => {
+      // Hide nav if viewport gets too narrow
+      if (window.innerWidth <= 1070) {
+        setIsVisible(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const getVisibleLinks = () => {
-    const allLinks = [
-      { id: 'intro', label: 'Home', href: '#' },
-      { id: 'about', label: t("about"), href: '#about' },
-      { id: 'projects', label: t("projects"), href: '#projects' },
-      { id: 'contact', label: t("contact"), href: '#contact' }
-    ];
     
-    return allLinks.filter(link => link.id !== currentSection);
-  };
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <NavBar $isVisible={isVisible}>
       <NavContainer>
         <NavLinks>
-          {getVisibleLinks().map((link, index) => (
+          {getVisibleNavLinks(currentSection, t).map((link, index) => (
             <React.Fragment key={link.id}>
               {index > 0 && <Separator>|</Separator>}
               <NavLink href={link.href}>{link.label}</NavLink>
@@ -81,7 +71,8 @@ const NavBar = styled.nav`
   transform: translateY(${props => props.$isVisible ? '0' : '-100%'});
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
-  @media ${device.sm} {
+  /* Hide on mobile/tablet - mobile nav takes over */
+  @media (max-width: 1070px) {
     display: none;
   }
 `;
