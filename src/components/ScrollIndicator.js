@@ -20,10 +20,17 @@ const ScrollIndicator = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   if (!isVisible) return null;
 
   return (
-    <Indicator>
+    <Indicator onClick={scrollToAbout}>
       <ChevronDown size={24} />
     </Indicator>
   );

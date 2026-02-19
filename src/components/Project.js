@@ -129,7 +129,7 @@ const ProjectCard = styled.li`
   border: 1px solid rgba(92, 225, 230, 0.1);
   margin-bottom: 2rem;
   cursor: default;
-  scroll-margin-top: 6rem;  /* Add this to offset for nav bar */
+  scroll-margin-top: 6rem;
   
   @media ${device.sm} {
     height: auto;
@@ -146,22 +146,22 @@ const ImageLayer = styled.div`
   height: 100%;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
-  opacity: ${props => props.$isExpanded ? '0.4' : '1'};  /* Fade when expanded */
   
   @media ${device.sm} {
     position: relative;
     width: 100% !important;
     height: 250px;
-    opacity: 1 !important;
   }
 `;
 
 const ProjectImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* Changed from cover to contain */
+  object-fit: contain;
   object-position: center;
-  background: rgba(0, 0, 0, 0.2);  /* Subtle background for letterboxing */
+  background: rgba(0, 0, 0, 0.2);
+  opacity: ${props => props.$isExpanded ? '0.4' : '1'};
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const StatusBadge = styled.span`
@@ -190,7 +190,7 @@ const ImageLinks = styled.div`
   gap: 1.5rem;
   opacity: ${props => props.$isExpanded ? '1' : '0'};
   pointer-events: ${props => props.$isExpanded ? 'auto' : 'none'};
-  transition: opacity 0.3s ease 0.2s;  /* Delay appearance */
+  transition: opacity 0.3s ease 0.2s;
   z-index: 10;
   
   @media ${device.sm} {
@@ -199,21 +199,28 @@ const ImageLinks = styled.div`
 `;
 
 const ImageLink = styled.a`
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: var(--cyan-dark);
-  color: var(--prussianblue-dark);
+  background: var(--coral);
+  border: 2px solid var(--coral);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+  
+  & svg {
+    color: var(--white);
+    stroke-width: 2.5;
+  }
   
   &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 40px rgba(92, 225, 230, 1);
     background: var(--cyan);
-    transform: scale(1.1);
-    box-shadow: 0 4px 20px var(--cyan);
+    border-color: var(--cyan);
   }
 `;
 
