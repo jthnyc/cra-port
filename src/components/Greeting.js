@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { device } from "../device";
 import { wavinghand } from "../images";
 
 const Greeting = () => {
@@ -32,16 +31,20 @@ const Greeting = () => {
 
 export default Greeting;
 
-const GreetingText = styled.p`
+const GreetingText = styled.h1`
   opacity: 1;
-  font-size: 1.125rem;
+  font-size: 2.25rem;
   color: var(--cyan);
   font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   letter-spacing: 0.02em;
+  line-height: 1.2;
   animation: fade-in-out 3s ease-in-out infinite;
-
+  white-space: nowrap;
+  min-height: 2.7rem;
+  min-width: 600px;  /* Fixed width to accommodate longest greeting (French) */
+  
   @keyframes fade-in-out {
     0% { opacity: 0; }
     20% { opacity: 1; }
@@ -49,22 +52,27 @@ const GreetingText = styled.p`
     100% { opacity: 0; }
   }
   
-  @media ${device.md} {
-    font-size: 1rem;
+  @media (max-width: 1070px) {
+    font-size: 1.5rem;
+    text-align: center;
+    min-height: 1.8rem;
+    min-width: 400px;  /* Adjust for mobile */
   }
   
-  @media ${device.sm} {
-    font-size: 0.9375rem;
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+    min-width: 340px;
   }
 `;
 
 const WavingHand = styled.img`
-  max-width: 1.375rem;
-  margin-right: 0.625rem;
+  max-width: 2rem;
+  margin-right: 0.75rem;
   display: inline-block;
   vertical-align: middle;
   
-  @media ${device.sm} {
-    max-width: 1.25rem;
+  @media (max-width: 1070px) {
+    max-width: 1.5rem;
+    margin-right: 0.5rem;
   }
 `;

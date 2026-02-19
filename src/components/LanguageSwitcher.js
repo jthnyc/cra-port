@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { device } from "../device";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -27,7 +28,7 @@ const SwitchButton = styled.button`
   bottom: 1.25rem;
   right: 1.25rem;
   min-width: 3.125rem;
-  z-index: 1001;  /* Added this - higher than nav (1000) */
+  z-index: 1001;
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 
@@ -38,5 +39,9 @@ const SwitchButton = styled.button`
 
   &:active {
     transform: translateY(0.125rem);
+  }
+  
+  @media ${device.sm} {
+    display: none;
   }
 `;

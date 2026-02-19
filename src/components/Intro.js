@@ -18,7 +18,6 @@ const Intro = () => {
 
         <TextSection>
           <Greeting />
-          <h1>{t("title")}</h1>
           <IntroText>
             {t("intro-p1")}
             <br/><br/>
@@ -45,17 +44,17 @@ const rotate = keyframes`
 const HeroSection = styled.section`
   max-width: 75rem;
   position: relative;
-  padding: clamp(8rem, 18vh, 12rem) 0 4rem 0;
+  padding: 4rem 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   
   @media (max-height: 700px) {
-    padding-top: 7rem;
+    padding-top: 5rem;
   }
   
   @media (max-width: 1070px) {
-    padding: 9rem 0 3rem 0;
+    padding: 8rem 0 3rem 0;
     min-height: auto;
   }
 `;
@@ -140,33 +139,20 @@ const ProfileImage = styled.img`
 
 const TextSection = styled.div`
   max-width: 40rem;
-  
-  & h1 {
-    margin-top: clamp(0.75rem, 2vh, 1.25rem);
-    margin-bottom: clamp(1rem, 2.5vh, 1.5rem);
-    font-size: clamp(2.5rem, 4vw, 4.5rem);
-    background: linear-gradient(135deg, var(--cyan) 0%, var(--coral) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.15;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   
   @media (max-width: 1070px) {
     max-width: 100%;
-    
-    & h1 {
-      font-size: clamp(2.25rem, 7vw, 3rem);
-      margin-top: 0.75rem;
-    }
   }
 `;
 
 const IntroText = styled.p`
-  margin-top: clamp(1.5rem, 3vh, 2rem);
   line-height: 1.75;
   font-size: clamp(1rem, 1.1vw, 1.0625rem);
   color: var(--white);
+  margin: 0;
   
   & a {
     color: var(--coral);
@@ -180,7 +166,6 @@ const IntroText = styled.p`
   
   @media (max-width: 1070px) {
     font-size: 1rem;
-    margin-top: 1.5rem;
   }
 `;
 

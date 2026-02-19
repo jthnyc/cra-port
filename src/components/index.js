@@ -1,4 +1,5 @@
 export { default as Navigation } from "./Navigation";
+export { default as MobileNav } from './MobileNav';
 export { default as LanguageSwitcher } from './LanguageSwitcher';
 export { default as Intro } from "./Intro";
 export { default as Greeting } from './Greeting';

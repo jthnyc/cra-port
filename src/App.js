@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   ScrollIndicator,
   Navigation,
+  MobileNav,
   LanguageSwitcher,
   Intro,
   About,
@@ -22,6 +23,7 @@ function App() {
         <Navigation />
         <ScrollIndicator />
         <LanguageSwitcher />
+        <MobileNav /> 
         <Sidebar />
         <Main>
           <Intro />
@@ -65,7 +67,7 @@ const Main = styled.main`
     min-height: 100vh;
     width: 100%;
     color: #edf5e1;
-    padding: 0rem;
+    /* REMOVED: padding: 0rem; */
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -76,12 +78,7 @@ const Main = styled.main`
   }
   
   @media ${device.sm} {
-    padding: 0 1.5rem;
-    & > section {
-      padding: 0rem;
-      &:not(:last-of-type) {
-        margin-bottom: 2rem;
-      }
-    }
+    margin-left: 0;
+    padding: 0 1rem;
   }
 `;

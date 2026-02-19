@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { ChevronDown } from "react-feather";
+import { device } from "../device";
 
 const ScrollIndicator = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -49,5 +50,9 @@ const Indicator = styled.div`
   
   &:hover {
     opacity: 1;
+  }
+  
+  @media ${device.sm} {
+    display: none;
   }
 `;
