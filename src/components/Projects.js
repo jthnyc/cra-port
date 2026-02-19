@@ -77,7 +77,7 @@ const ProjectSection = styled.section`
   }
   
   @media ${device.sm} {
-    padding: 0 1rem;
+    // padding: 0 1rem;
     & h2 {
       margin-top: 6rem;
     }

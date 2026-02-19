@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "./device";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   ScrollIndicator,
@@ -45,7 +44,7 @@ export default App;
 
 const Main = styled.main`
   background: linear-gradient(135deg, var(--prussianblue-dark) 0%, var(--prussianblue) 50%, var(--prussianblue-light) 100%);
-  padding: 0 10rem;
+  padding: 0 clamp(1rem, 4vw, 10rem);
   width: 100%;
   min-height: 100vh;
   position: relative;
@@ -71,7 +70,6 @@ const Main = styled.main`
     min-height: 100vh;
     width: 100%;
     color: #edf5e1;
-    /* REMOVED: padding: 0rem; */
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -79,10 +77,5 @@ const Main = styled.main`
     &:not(:last-of-type) {
       margin-bottom: 3.5rem;
     }
-  }
-  
-  @media ${device.sm} {
-    margin-left: 0;
-    padding: 0 1rem;
   }
 `;

@@ -24,11 +24,11 @@ const Contact = () => {
         </Divider>
 
         <SocialLinks>
-          <SocialLink href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+          <SocialLink href="https://www.linkedin.com/in/joannathhuang/" target="_blank" rel="noopener noreferrer">
             <Linkedin size={24} />
             {t('linkedin')}
           </SocialLink>
-          <SocialLink href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <SocialLink href="https://github.com/jthnyc" target="_blank" rel="noopener noreferrer">
             <GitHub size={24} />
             {t('github')}
           </SocialLink>
