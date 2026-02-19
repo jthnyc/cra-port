@@ -4,7 +4,8 @@ const loadLocale = async (lang) => {
             common: (await import(`./${lang}/common.json`)).default,
             intro: (await import(`./${lang}/intro.json`)).default,
             about: (await import(`./${lang}/about.json`)).default,
-            projects: (await import(`./${lang}/projects.json`)).default
+            projects: (await import(`./${lang}/projects.json`)).default,
+            contact: (await import(`./${lang}/contact.json`)).default
         }
         return translations;
     } catch (error) {

@@ -11,7 +11,8 @@ import {
   Sidebar,
   Projects,
   Contact,
-  Footer
+  Footer,
+  WaveformDivider
 } from "./components/index";
 import GlobalStyle from "./globalStyles";
 
@@ -27,8 +28,11 @@ function App() {
         <Sidebar />
         <Main>
           <Intro />
+          <WaveformDivider />
           <About />
+          <WaveformDivider />
           <Projects />
+          <WaveformDivider />
           <Contact />
         </Main>
         <Footer />

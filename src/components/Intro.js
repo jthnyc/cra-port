@@ -72,6 +72,8 @@ const HeroContent = styled.div`
     grid-template-columns: 1fr;
     gap: 2.5rem;
     text-align: center;
+    max-width: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -99,17 +101,17 @@ const VinylAccent = styled.div`
   height: 100%;
   border-radius: 50%;
   background: 
-    radial-gradient(circle at center, transparent 30%, rgba(92, 225, 230, 0.4) 30.5%, transparent 31%),
-    radial-gradient(circle at center, transparent 35%, rgba(92, 225, 230, 0.3) 35.5%, transparent 36%),
-    radial-gradient(circle at center, transparent 40%, rgba(92, 225, 230, 0.3) 40.5%, transparent 41%),
-    radial-gradient(circle at center, transparent 45%, rgba(92, 225, 230, 0.4) 45.5%, transparent 46%),
+    radial-gradient(circle at center, transparent 30%, rgba(92, 225, 230, 0.6) 30.5%, transparent 31%),
+    radial-gradient(circle at center, transparent 35%, rgba(92, 225, 230, 0.5) 35.5%, transparent 36%),
+    radial-gradient(circle at center, transparent 40%, rgba(92, 225, 230, 0.5) 40.5%, transparent 41%),
+    radial-gradient(circle at center, transparent 45%, rgba(92, 225, 230, 0.6) 45.5%, transparent 46%),
     conic-gradient(
       from 0deg,
-      rgba(92, 225, 230, 0.2) 0deg,
-      rgba(4, 56, 108, 0.3) 90deg,
-      rgba(92, 225, 230, 0.2) 180deg,
-      rgba(4, 56, 108, 0.3) 270deg,
-      rgba(92, 225, 230, 0.2) 360deg
+      rgba(92, 225, 230, 0.4) 0deg,
+      rgba(255, 107, 107, 0.3) 90deg,
+      rgba(92, 225, 230, 0.4) 180deg,
+      rgba(255, 107, 107, 0.3) 270deg,
+      rgba(92, 225, 230, 0.4) 360deg
     );
   animation: ${rotate} 20s linear infinite;
   z-index: -1;
@@ -145,6 +147,7 @@ const TextSection = styled.div`
   
   @media (max-width: 1070px) {
     max-width: 100%;
+    text-align: center;
   }
 `;
 

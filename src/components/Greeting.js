@@ -43,7 +43,7 @@ const GreetingText = styled.h1`
   animation: fade-in-out 3s ease-in-out infinite;
   white-space: nowrap;
   min-height: 2.7rem;
-  min-width: 600px;  /* Fixed width to accommodate longest greeting (French) */
+  min-width: 600px;
   
   @keyframes fade-in-out {
     0% { opacity: 0; }
@@ -56,12 +56,9 @@ const GreetingText = styled.h1`
     font-size: 1.5rem;
     text-align: center;
     min-height: 1.8rem;
-    min-width: 400px;  /* Adjust for mobile */
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.25rem;
-    min-width: 340px;
+    min-width: 0;
+    white-space: normal;
+    max-width: 100%;
   }
 `;
 

@@ -7,40 +7,62 @@ const Project = ({ id, img, title, description, stack, link, github, status }) =
   const [isExpanded, setIsExpanded] = useState(false);
 
   const renderDescription = () => {
-    // Detect if Chinese by checking for Chinese characters
     const isChinese = /[\u4e00-\u9fa5]/.test(description);
-    
-    // Split by appropriate sentence delimiter
     const parts = isChinese 
       ? description.split(/(?<=。)\s*/) 
       : description.split(/(?<=\.)\s+/);
     
-    return parts.map((sentence, index) => {
-      let color = 'var(--white)';
-      
-      // First ~2 sentences = problem (lighter orange/coral)
-      if (index < 2) {
-        color = 'var(--lightorange)';
-      } 
-      // Sentences with transparency/metrics = status (coral)
-      else if (
-        sentence.includes('Full transparency') || 
-        sentence.includes('完整透明度') ||
-        sentence.includes('%') ||
-        sentence.includes('Launched') ||
-        sentence.includes('已上線') ||
-        sentence.includes('Shipped') ||
-        sentence.includes('已發布')
-      ) {
-        color = 'var(--coral)';
+    const paragraphs = [];
+    
+    // First 1-2 sentences = problem (lighter orange)
+    if (parts.length > 0) {
+      const problemText = parts.slice(0, 2).join(' ');
+      paragraphs.push({ text: problemText, color: 'var(--lightorange)' });
+    }
+    
+    // Find where status/results start (sentences with %, "launched", "transparency", etc.)
+    let statusStartIndex = -1;
+    for (let i = 2; i < parts.length; i++) {
+      if (parts[i].includes('%') || 
+          parts[i].includes('transparency') || 
+          parts[i].includes('launched') || 
+          parts[i].includes('Launched') ||
+          parts[i].includes('完整透明度') ||
+          parts[i].includes('上線') ||
+          parts[i].includes('已上線')) {
+        statusStartIndex = i;
+        break;
       }
-      
-      return (
-        <Sentence key={index} $color={color}>
-          {sentence}
-        </Sentence>
-      );
-    });
+    }
+    
+    // Middle sentences = approach (white)
+    if (statusStartIndex > 2) {
+      const approachText = parts.slice(2, statusStartIndex).join(' ');
+      if (approachText) {
+        paragraphs.push({ text: approachText, color: 'var(--white)' });
+      }
+    } else if (parts.length > 2) {
+      // If no status found, put all middle text together
+      const approachText = parts.slice(2, parts.length - 1).join(' ');
+      if (approachText) {
+        paragraphs.push({ text: approachText, color: 'var(--white)' });
+      }
+    }
+    
+    // Last sentences = status (coral)
+    if (statusStartIndex > -1) {
+      const statusText = parts.slice(statusStartIndex).join(' ');
+      paragraphs.push({ text: statusText, color: 'var(--coral)' });
+    } else if (parts.length > 2) {
+      // Last sentence as status
+      paragraphs.push({ text: parts[parts.length - 1], color: 'var(--coral)' });
+    }
+    
+    return paragraphs.map((para, index) => (
+      <Paragraph key={index} $color={para.color}>
+        {para.text}
+      </Paragraph>
+    ));
   };
 
   return (
@@ -235,12 +257,13 @@ const ProjectDescription = styled.div`
   font-size: 0.9375rem;
 `;
 
-const Sentence = styled.span`
+const Paragraph = styled.p`
   color: ${props => props.$color};
-  display: block;
+  margin: 0;
+  line-height: 1.7;
   
   &:not(:last-child) {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 `;
 
