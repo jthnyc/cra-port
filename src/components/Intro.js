@@ -44,7 +44,7 @@ const rotate = keyframes`
 const HeroSection = styled.section`
   max-width: 75rem;
   position: relative;
-  padding: 4rem 0;
+  padding: 4rem 0 6rem 0; /* Added more bottom padding for waveform spacing */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -54,16 +54,17 @@ const HeroSection = styled.section`
   }
   
   @media (max-width: 1070px) {
-    padding: 8rem 0 3rem 0;
+    padding: 8rem 0 4rem 0; /* Increased bottom padding on mobile */
     min-height: auto;
   }
 `;
 
 const HeroContent = styled.div`
   display: grid;
-  grid-template-columns: minmax(320px, 420px) 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(320px, 450px) minmax(auto, 600px); /* Made text narrower, image wider */
+  gap: clamp(3rem, 6vw, 5rem); /* Increased gap */
   align-items: center;
+  justify-content: center; /* Center the whole grid */
   position: relative;
   z-index: 1;
   width: 100%;
@@ -80,14 +81,14 @@ const HeroContent = styled.div`
 const ProfileSection = styled.div`
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 450px; /* Increased from 420px */
   aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   
   @media (max-width: 1070px) {
-    max-width: 300px;
+    max-width: 360px; /* Increased from 300px - takes more screen width */
     margin: 0 auto;
   }
 `;
@@ -101,28 +102,30 @@ const VinylAccent = styled.div`
   height: 110%;
   border-radius: 50%;
   background: 
-    radial-gradient(circle at center, transparent 30%, rgba(92, 225, 230, 0.6) 30.5%, transparent 31%),
-    radial-gradient(circle at center, transparent 35%, rgba(92, 225, 230, 0.5) 35.5%, transparent 36%),
-    radial-gradient(circle at center, transparent 40%, rgba(92, 225, 230, 0.5) 40.5%, transparent 41%),
-    radial-gradient(circle at center, transparent 45%, rgba(92, 225, 230, 0.6) 45.5%, transparent 46%),
+    /* More visible rings with higher opacity and contrast */
+    radial-gradient(circle at center, transparent 30%, rgba(92, 225, 230, 0.85) 30.5%, transparent 31%),
+    radial-gradient(circle at center, transparent 35%, rgba(255, 107, 107, 0.7) 35.5%, transparent 36%),
+    radial-gradient(circle at center, transparent 40%, rgba(92, 225, 230, 0.75) 40.5%, transparent 41%),
+    radial-gradient(circle at center, transparent 45%, rgba(255, 107, 107, 0.85) 45.5%, transparent 46%),
+    /* More pronounced color sections */
     conic-gradient(
       from 0deg,
-      rgba(92, 225, 230, 0.4) 0deg,
-      rgba(255, 107, 107, 0.3) 90deg,
-      rgba(92, 225, 230, 0.4) 180deg,
-      rgba(255, 107, 107, 0.3) 270deg,
-      rgba(92, 225, 230, 0.4) 360deg
+      rgba(92, 225, 230, 0.6) 0deg,
+      rgba(255, 107, 107, 0.5) 90deg,
+      rgba(92, 225, 230, 0.6) 180deg,
+      rgba(255, 107, 107, 0.5) 270deg,
+      rgba(92, 225, 230, 0.6) 360deg
     );
   animation: ${rotate} 20s linear infinite;
   z-index: 0;
 `;
 
 const AlbumCover = styled.img`
-  width: 85%;
-  height: 85%;
+  width: 92%; /* Increased from 85% */
+  height: 92%; /* Increased from 85% */
   aspect-ratio: 1;
   object-fit: cover;
-  object-position: center;
+  object-position: center 5%; /* Adjusted to show more of photo */
   border-radius: 4px;
   border: 4px solid var(--cyan);
   box-shadow: 
@@ -131,7 +134,15 @@ const AlbumCover = styled.img`
     inset 0 0 60px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  top: 25px; /* Center on vinyl */
+  left: 25px; /* Center on vinyl */
   z-index: 1;
+  
+  /* Reduce offset on mobile for better centering */
+  @media (max-width: 1070px) {
+    top: 0;
+    left: 0;
+  }
   
   /* Album cover styling */
   &::before {
@@ -161,7 +172,7 @@ const AlbumCover = styled.img`
 `;
 
 const TextSection = styled.div`
-  max-width: 40rem;
+  max-width: 600px; /* Constrained text width */
   display: flex;
   flex-direction: column;
   gap: 2rem;

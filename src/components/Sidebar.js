@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../device";
 import { GitHub, Linkedin, AtSign } from "react-feather";
-import { SpotifyVinyl } from './index';
+// import { SpotifyVinyl } from './index';
 
 export default function Navbar() {
   return (
@@ -17,7 +17,7 @@ export default function Navbar() {
             <AtSign />
           </a>
       </SidebarList>
-      <SpotifyVinyl />
+      {/* <SpotifyVinyl /> */}{/* TODO: Replace with embedded Spotify player*/}
     </SidebarContainer>
   );
 }

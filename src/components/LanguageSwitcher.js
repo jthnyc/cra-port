@@ -20,14 +20,18 @@ const SwitchButton = styled.button`
   color: black;
   font-size: 1.125rem;
   font-weight: bold;
-  padding: 0.75rem .75rem;
+  padding: 0;
   border: none;
-  border-radius: 3.125rem;
+  border-radius: 50%; /* Perfect circle */
   cursor: pointer;
   position: fixed;
   bottom: 1.25rem;
   right: 1.25rem;
-  min-width: 3.125rem;
+  width: 3.5rem; /* Fixed width */
+  height: 3.5rem; /* Fixed height = circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1001;
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;

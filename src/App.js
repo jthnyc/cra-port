@@ -27,7 +27,6 @@ function App() {
         <Sidebar />
         <Main>
           <Intro />
-          <WaveformDivider />
           <About />
           <WaveformDivider />
           <Projects />

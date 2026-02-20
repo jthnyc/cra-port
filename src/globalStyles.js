@@ -5,16 +5,16 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        // --prussianblue: #04386c;
-        // --prussianblue-dark: #022544;
-        // --prussianblue-light: #0a5c99;
-        // --white: #edf5e1;
-        // --offwhite: #f8f9fa;
-        // --coral: #ff6b6b;
-        // --coral-light: #ff8e8e;
-        // --cyan: #5ce1e6;
-        // --cyan-dark: #2eb5ad;
-        // --lightorange: #ff6b6b;
+        --prussianblue: #04386c;
+        --prussianblue-dark: #022544;
+        --prussianblue-light: #0a5c99;
+        --white: #edf5e1;
+        --offwhite: #f8f9fa;
+        --coral: #ff6b6b;
+        --coral-light: #ff8e8e;
+        --cyan: #5ce1e6;
+        --cyan-dark: #2eb5ad;
+        --lightorange: #ff6b6b;
     }
 
     body {

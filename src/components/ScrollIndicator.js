@@ -48,7 +48,7 @@ const Indicator = styled.div`
   bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--cyan);
+  color: var(--lightorange);
   opacity: 0.6;
   animation: ${bounce} 2s ease-in-out infinite;
   cursor: pointer;

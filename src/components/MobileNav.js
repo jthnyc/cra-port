@@ -174,13 +174,17 @@ const BannerLanguageToggle = styled.button`
   background: transparent;
   color: var(--cyan);
   border: 1px solid var(--cyan);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0;
+  border-radius: 50%; /* Perfect circle */
   font-weight: 600;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-width: 60px;
+  width: 2.5rem; /* Fixed width for circle */
+  height: 2.5rem; /* Fixed height for circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   &:hover {
     background: var(--cyan);

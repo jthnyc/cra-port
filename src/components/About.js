@@ -26,6 +26,25 @@ const About = () => {
     return highlightedText;
   };
 
+  // Function to highlight first sentence for better readability
+  const highlightFirstSentence = (text, skipHighlight = false) => {
+    if (skipHighlight) {
+      return highlightText(text);
+    }
+    
+    // Find first sentence (ends with . ? ! or line break)
+    const match = text.match(/^([^.!?]+[.!?])/);
+    if (match) {
+      const firstSentence = match[1];
+      const rest = text.slice(firstSentence.length);
+      return highlightText(
+        `<span class="first-sentence">${firstSentence}</span>${rest}`
+      );
+    }
+    
+    return highlightText(text);
+  };
+
   return (
     <AboutSection id="about">
       <h2>{t('title')}</h2>
@@ -47,10 +66,10 @@ const About = () => {
 
         {/* Right: Narrative */}
         <NarrativeContent>
-          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p1')) }} />
-          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p2')) }} />
-          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p3')) }} />
-          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p4')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p1')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p2')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p3'), true) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p4')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p5')) }} />
         </NarrativeContent>
       </SplitContainer>
@@ -190,10 +209,16 @@ const Paragraph = styled.p`
     font-weight: 600;
   }
 
-  /* Chinese first sentence highlight */
+  /* First sentence highlight for better readability */
   & span.first-sentence {
-    color: var(--coral);
+    color: var(--cyan);
     font-weight: 500;
+  }
+  
+  /* Value prop highlights (p5) */
+  & span.value-highlight {
+    color: var(--cyan);
+    font-weight: 600;
   }
   
   /* Project links */
@@ -212,5 +237,28 @@ const Paragraph = styled.p`
   
   @media ${device.sm} {
     font-size: 1rem;
+    
+    /* Make first sentence more prominent on mobile */
+    & span.first-sentence {
+      font-weight: 600;
+    }
+    
+    /* Value prop highlights stay bold on mobile */
+    & span.value-highlight {
+      font-weight: 700;
+    }
   }
 `;
+
+// const HighlightParagraph = styled(Paragraph)`
+//   font-size: 1.125rem;
+//   font-weight: 500;
+//   color: var(--cyan);
+//   margin: 1.5rem 0 0 0;
+//   line-height: 1.8;
+  
+//   @media ${device.sm} {
+//     font-size: 1.0625rem;
+//     margin: 1.25rem 0 0 0;
+//   }
+// `;
