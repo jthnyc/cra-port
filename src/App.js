@@ -14,6 +14,7 @@ import {
   WaveformDivider
 } from "./components/index";
 import GlobalStyle from "./globalStyles";
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Contact />
         </Main>
         <Footer />
+        <Analytics />
       </div>
     </div>
   );
