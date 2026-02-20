@@ -7,14 +7,16 @@ import { useEffect, useRef } from 'react';
 
 const Intro = () => {
   const { t, ready } = useTranslation("intro");
-  const sectionRef = useRef(null); // Add ref for section tracking
+  const sectionRef = useRef(null);
 
   // Track when section becomes visible
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          track('Section View', { section: 'intro' });
+          track('section_view', { 
+            section: 'intro'
+          });
         }
       },
       { threshold: 0.3 }
@@ -29,13 +31,15 @@ const Intro = () => {
 
   // Track activity icon clicks
   const handleActivityClick = (activity) => {
-    track('Activity Click', { activity });
+    track('activity_click', { 
+      activity: activity 
+    });
   };
 
   if (!ready) return <p>Loading translations...</p>;
 
   return (
-    <HeroSection id="intro" ref={sectionRef}> {/* Add ref here */}
+    <HeroSection id="intro" ref={sectionRef}>
       <HeroContent>
         <ProfileSection>
           <VinylAccent />
@@ -85,7 +89,7 @@ const rotate = keyframes`
 const HeroSection = styled.section`
   max-width: 75rem;
   position: relative;
-  padding: 4rem 0 6rem 0; /* Added more bottom padding for waveform spacing */
+  padding: 4rem 0 6rem 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -95,17 +99,17 @@ const HeroSection = styled.section`
   }
   
   @media (max-width: 1070px) {
-    padding: 8rem 0 4rem 0; /* Increased bottom padding on mobile */
+    padding: 8rem 0 4rem 0;
     min-height: auto;
   }
 `;
 
 const HeroContent = styled.div`
   display: grid;
-  grid-template-columns: minmax(320px, 450px) minmax(auto, 600px); /* Made text narrower, image wider */
-  gap: clamp(3rem, 6vw, 5rem); /* Increased gap */
+  grid-template-columns: minmax(320px, 450px) minmax(auto, 600px);
+  gap: clamp(3rem, 6vw, 5rem);
   align-items: center;
-  justify-content: center; /* Center the whole grid */
+  justify-content: center;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -122,14 +126,14 @@ const HeroContent = styled.div`
 const ProfileSection = styled.div`
   position: relative;
   width: 100%;
-  max-width: 450px; /* Increased from 420px */
+  max-width: 450px;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   
   @media (max-width: 1070px) {
-    max-width: 360px; /* Increased from 300px - takes more screen width */
+    max-width: 360px;
     margin: 0 auto;
   }
 `;
@@ -143,12 +147,10 @@ const VinylAccent = styled.div`
   height: 110%;
   border-radius: 50%;
   background: 
-    /* More visible rings with higher opacity and contrast */
     radial-gradient(circle at center, transparent 30%, rgba(92, 225, 230, 0.85) 30.5%, transparent 31%),
     radial-gradient(circle at center, transparent 35%, rgba(255, 107, 107, 0.7) 35.5%, transparent 36%),
     radial-gradient(circle at center, transparent 40%, rgba(92, 225, 230, 0.75) 40.5%, transparent 41%),
     radial-gradient(circle at center, transparent 45%, rgba(255, 107, 107, 0.85) 45.5%, transparent 46%),
-    /* More pronounced color sections */
     conic-gradient(
       from 0deg,
       rgba(92, 225, 230, 0.6) 0deg,
@@ -162,11 +164,11 @@ const VinylAccent = styled.div`
 `;
 
 const AlbumCover = styled.img`
-  width: 92%; /* Increased from 85% */
-  height: 92%; /* Increased from 85% */
+  width: 92%;
+  height: 92%;
   aspect-ratio: 1;
   object-fit: cover;
-  object-position: center 5%; /* Adjusted to show more of photo */
+  object-position: center 5%;
   border-radius: 4px;
   border: 4px solid var(--cyan);
   box-shadow: 
@@ -175,17 +177,15 @@ const AlbumCover = styled.img`
     inset 0 0 60px rgba(0, 0, 0, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  top: 25px; /* Center on vinyl */
-  left: 25px; /* Center on vinyl */
+  top: 25px;
+  left: 25px;
   z-index: 1;
   
-  /* Reduce offset on mobile for better centering */
   @media (max-width: 1070px) {
     top: 0;
     left: 0;
   }
   
-  /* Album cover styling */
   &::before {
     content: '';
     position: absolute;
@@ -213,7 +213,7 @@ const AlbumCover = styled.img`
 `;
 
 const TextSection = styled.div`
-  max-width: 600px; /* Constrained text width */
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 2rem;

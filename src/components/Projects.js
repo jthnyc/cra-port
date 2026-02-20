@@ -15,7 +15,9 @@ export const Projects = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          track('Section View', { section: 'projects' });
+          track('section_view', { 
+            section: 'projects'
+          });
         }
       },
       { threshold: 0.3 }
@@ -72,30 +74,35 @@ export const Projects = () => {
     },
   ];
 
-  // Pass tracking function to each project
+  // Pass tracking functions to each project
   const projectsWithTracking = projects.map(project => ({
     ...project,
     onProjectClick: () => {
-      track('Project Card Click', { 
+      track('project_click', { 
         project: project.title,
         status: project.status,
-        id: project.id
+        id: project.id,
+        type: 'card'
       });
     },
     onGithubClick: () => {
-      track('Project GitHub Click', { 
-        project: project.title
+      track('project_link_click', { 
+        project: project.title,
+        link_type: 'github',
+        location: 'card'
       });
     },
     onLiveLinkClick: () => {
-      track('Project Live Link Click', { 
-        project: project.title
+      track('project_link_click', { 
+        project: project.title,
+        link_type: 'live',
+        location: 'card'
       });
     }
   }));
   
   return (
-    <ProjectSection id="projects" ref={sectionRef}> {/* Add ref here */}
+    <ProjectSection id="projects" ref={sectionRef}>
       <h2>{t("title")}</h2>
       <ProjectsContainer>
         {projectsWithTracking.map((project) => (
@@ -121,7 +128,6 @@ const ProjectSection = styled.section`
   }
   
   @media ${device.sm} {
-    // padding: 0 1rem;
     & h2 {
       margin-top: 6rem;
     }

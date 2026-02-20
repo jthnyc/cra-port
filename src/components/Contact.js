@@ -14,7 +14,9 @@ const Contact = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          track('Section View', { section: 'contact' });
+          track('section_view', { 
+            section: 'contact'
+          });
         }
       },
       { threshold: 0.3 }
@@ -29,15 +31,21 @@ const Contact = () => {
 
   // Track contact interactions
   const handleEmailClick = () => {
-    track('Contact Click', { type: 'email' });
+    track('contact_click', { 
+      type: 'email'
+    });
   };
 
   const handleLinkedInClick = () => {
-    track('Contact Click', { type: 'linkedin' });
+    track('contact_click', { 
+      type: 'linkedin'
+    });
   };
 
   const handleGitHubClick = () => {
-    track('Contact Click', { type: 'github' });
+    track('contact_click', { 
+      type: 'github'
+    });
   };
 
   return (
@@ -47,7 +55,7 @@ const Contact = () => {
         <Subtitle>{t('subtitle')}</Subtitle>
 
         <PrimaryAction 
-          href="mailto:joannathhuang@gmail.com"
+          href="mailto:your.email@example.com"
           onClick={handleEmailClick}
         >
           <Mail size={22} />

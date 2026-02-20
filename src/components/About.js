@@ -15,7 +15,9 @@ const About = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          track('Section View', { section: 'about' });
+          track('section_view', { 
+            section: 'about'
+          });
         }
       },
       { threshold: 0.3 }
@@ -31,18 +33,17 @@ const About = () => {
   // Handle project link clicks via event delegation
   useEffect(() => {
     const handleProjectLinkClick = (e) => {
-      // Check if the clicked element or its parent is a project link
       const link = e.target.closest('.project-link');
       if (link) {
         const projectName = link.textContent;
-        track('Project Link Click', { 
-          project: projectName, 
-          section: 'about' 
+        track('project_link_click', { 
+          project: projectName,
+          section: 'about',
+          location: 'narrative'
         });
       }
     };
 
-    // Add event listener to the narrative content container
     const narrativeContent = document.querySelector('.narrative-content');
     if (narrativeContent) {
       narrativeContent.addEventListener('click', handleProjectLinkClick);
@@ -53,7 +54,7 @@ const About = () => {
         narrativeContent.removeEventListener('click', handleProjectLinkClick);
       }
     };
-  }, []); // Empty dependency array since t() is stable
+  }, []);
 
   // Function to highlight projects as clickable links
   const highlightText = (text) => {
@@ -63,7 +64,6 @@ const About = () => {
     if (Array.isArray(projects)) {
       projects.forEach(project => {
         const regex = new RegExp(`(${project.name})`, 'g');
-        // Use data attribute instead of onclick
         highlightedText = highlightedText.replace(regex, 
           `<a href="${project.anchor}" class="project-link" data-project="${project.name}">$1</a>`);
       });
@@ -95,7 +95,6 @@ const About = () => {
       <h2>{t('title')}</h2>
       
       <SplitContainer>
-        {/* Left: Timeline */}
         <TimelineSidebar>
           <TimelineLine />
           {timelineStops.map((stop, index) => (
@@ -109,7 +108,6 @@ const About = () => {
           ))}
         </TimelineSidebar>
 
-        {/* Right: Narrative */}
         <NarrativeContent className="narrative-content">
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p1')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p2')) }} />
@@ -128,7 +126,6 @@ const About = () => {
 
 export default About;
 
-// All styled components remain exactly the same
 const AboutSection = styled.section`
   max-width: 75rem;
   color: var(--white);
