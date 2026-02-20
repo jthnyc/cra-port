@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { ExternalLink, GitHub } from 'react-feather';
 import { device } from '../device';
-import { track } from '@vercel/analytics'; // Add this import
+import { track } from '@vercel/analytics';
 
 const Project = ({ 
   id, 

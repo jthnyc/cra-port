@@ -3,12 +3,12 @@ import Project from "./Project";
 import { scenesync, khvs, pollyglot, theshoppies } from "../images";
 import { device } from "../device";
 import { useTranslation } from "react-i18next";
-import { track } from '@vercel/analytics'; // Add this import
-import { useEffect, useRef } from 'react'; // Add useRef and useEffect
+import { track } from '@vercel/analytics';
+import { useEffect, useRef } from 'react';
 
 export const Projects = () => {
   const { t, ready } = useTranslation("projects");
-  const sectionRef = useRef(null); // Add ref for section tracking
+  const sectionRef = useRef(null);
 
   // Track when section becomes visible
   useEffect(() => {

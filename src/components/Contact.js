@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { Mail, Linkedin, GitHub } from 'react-feather';
 import { device } from '../device';
 import { useTranslation } from 'react-i18next';
-import { track } from '@vercel/analytics'; // Add this import
-import { useEffect, useRef } from 'react'; // Add useRef and useEffect
+import { track } from '@vercel/analytics';
+import { useEffect, useRef } from 'react';
 
 const Contact = () => {
   const { t } = useTranslation('contact');
-  const sectionRef = useRef(null); // Add ref for section tracking
+  const sectionRef = useRef(null);
 
   // Track when section becomes visible
   useEffect(() => {
@@ -41,13 +41,13 @@ const Contact = () => {
   };
 
   return (
-    <ContactSection id="contact" ref={sectionRef}> {/* Add ref here */}
+    <ContactSection id="contact" ref={sectionRef}>
       <ContactContainer>
         <Title>{t('title')}</Title>
         <Subtitle>{t('subtitle')}</Subtitle>
 
         <PrimaryAction 
-          href="mailto:your.email@example.com"
+          href="mailto:joannathhuang@gmail.com"
           onClick={handleEmailClick}
         >
           <Mail size={22} />
