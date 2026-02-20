@@ -2,9 +2,77 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { ExternalLink, GitHub } from 'react-feather';
 import { device } from '../device';
+import { track } from '@vercel/analytics'; // Add this import
 
-const Project = ({ id, img, title, description, stack, link, github, status }) => {
+const Project = ({ 
+  id, 
+  img, 
+  title, 
+  description, 
+  stack, 
+  link, 
+  github, 
+  status, 
+  onProjectClick, 
+  onGithubClick, 
+  onLiveLinkClick 
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Track hover interactions (optional - remove if you don't want this)
+  const handleMouseEnter = () => {
+    setIsExpanded(true);
+    track('Project Hover', { 
+      project: title,
+      action: 'expand'
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setIsExpanded(false);
+    track('Project Hover', { 
+      project: title,
+      action: 'collapse'
+    });
+  };
+
+  // Track link clicks with proper event handling
+  const handleImageLinkClick = (type, e) => {
+    e.stopPropagation(); // Prevent card click
+    if (type === 'live' && onLiveLinkClick) {
+      onLiveLinkClick();
+    } else if (type === 'github' && onGithubClick) {
+      onGithubClick();
+    }
+    // Also track directly as a fallback
+    track('Project Image Link Click', { 
+      project: title,
+      linkType: type
+    });
+  };
+
+  const handleMobileLinkClick = (type, e) => {
+    e.stopPropagation(); // Prevent card click
+    if (type === 'live' && onLiveLinkClick) {
+      onLiveLinkClick();
+    } else if (type === 'github' && onGithubClick) {
+      onGithubClick();
+    }
+    track('Project Mobile Link Click', { 
+      project: title,
+      linkType: type
+    });
+  };
+
+  const handleCardClick = () => {
+    if (onProjectClick) {
+      onProjectClick();
+    }
+    track('Project Card Click', { 
+      project: title,
+      status: status
+    });
+  };
 
   const renderDescription = () => {
     const isChinese = /[\u4e00-\u9fa5]/.test(description);
@@ -68,9 +136,10 @@ const Project = ({ id, img, title, description, stack, link, github, status }) =
   return (
     <ProjectCard 
       id={id}
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       $isExpanded={isExpanded}
+      onClick={handleCardClick}
     >
       <ImageLayer $isExpanded={isExpanded}>
         <ProjectImage src={img} alt={title} $isExpanded={isExpanded} />
@@ -79,12 +148,24 @@ const Project = ({ id, img, title, description, stack, link, github, status }) =
         {/* Show links on image when expanded */}
         <ImageLinks $isExpanded={isExpanded}>
           {link && (
-            <ImageLink href={link} target="_blank" rel="noopener noreferrer" title="View Project">
+            <ImageLink 
+              href={link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              title="View Project"
+              onClick={(e) => handleImageLinkClick('live', e)}
+            >
               <ExternalLink size={24} />
             </ImageLink>
           )}
           {github && (
-            <ImageLink href={github} target="_blank" rel="noopener noreferrer" title="View Code">
+            <ImageLink 
+              href={github} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              title="View Code"
+              onClick={(e) => handleImageLinkClick('github', e)}
+            >
               <GitHub size={24} />
             </ImageLink>
           )}
@@ -96,12 +177,24 @@ const Project = ({ id, img, title, description, stack, link, github, status }) =
           <ProjectTitle>{title}</ProjectTitle>
           <MobileLinks>
             {link && (
-              <MobileLink href={link} target="_blank" rel="noopener noreferrer" title="View Project">
+              <MobileLink 
+                href={link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                title="View Project"
+                onClick={(e) => handleMobileLinkClick('live', e)}
+              >
                 <ExternalLink size={20} />
               </MobileLink>
             )}
             {github && (
-              <MobileLink href={github} target="_blank" rel="noopener noreferrer" title="View Code">
+              <MobileLink 
+                href={github} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                title="View Code"
+                onClick={(e) => handleMobileLinkClick('github', e)}
+              >
                 <GitHub size={20} />
               </MobileLink>
             )}
@@ -119,6 +212,7 @@ const Project = ({ id, img, title, description, stack, link, github, status }) =
 
 export default Project;
 
+// All your styled components remain exactly the same from here down
 const ProjectCard = styled.li`
   position: relative;
   width: 100%;

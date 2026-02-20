@@ -2,14 +2,40 @@ import styled, { keyframes } from "styled-components";
 import { Greeting } from './';
 import { spotify, duolingo, dumpling, profile } from '../images';
 import { useTranslation } from "react-i18next";
+import { track } from '@vercel/analytics';
+import { useEffect, useRef } from 'react';
 
 const Intro = () => {
   const { t, ready } = useTranslation("intro");
+  const sectionRef = useRef(null); // Add ref for section tracking
+
+  // Track when section becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          track('Section View', { section: 'intro' });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Track activity icon clicks
+  const handleActivityClick = (activity) => {
+    track('Activity Click', { activity });
+  };
 
   if (!ready) return <p>Loading translations...</p>;
 
   return (
-    <HeroSection id="intro">
+    <HeroSection id="intro" ref={sectionRef}> {/* Add ref here */}
       <HeroContent>
         <ProfileSection>
           <VinylAccent />
@@ -22,9 +48,24 @@ const Intro = () => {
             {t("intro-p1")}
             <br/><br/>
             {t("intro-p2")}
-            <ActivityIcon src={spotify} alt="Spotify"/> {t("intro-p2-1")}
-            <ActivityIcon src={duolingo} alt="duolingo" /> {t("intro-p2-2")}
-            <ActivityIcon src={dumpling} alt="dumpling" /> {t("intro-p2-3")}
+            <ActivityIcon 
+              src={spotify} 
+              alt="Spotify" 
+              onClick={() => handleActivityClick('spotify')}
+              style={{ cursor: 'pointer' }}
+            /> {t("intro-p2-1")}
+            <ActivityIcon 
+              src={duolingo} 
+              alt="duolingo" 
+              onClick={() => handleActivityClick('duolingo')}
+              style={{ cursor: 'pointer' }}
+            /> {t("intro-p2-2")}
+            <ActivityIcon 
+              src={dumpling} 
+              alt="dumpling" 
+              onClick={() => handleActivityClick('dumpling')}
+              style={{ cursor: 'pointer' }}
+            /> {t("intro-p2-3")}
             <br/><br/>
             {t("intro-p3")}
           </IntroText>

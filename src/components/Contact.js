@@ -2,17 +2,54 @@ import styled from 'styled-components';
 import { Mail, Linkedin, GitHub } from 'react-feather';
 import { device } from '../device';
 import { useTranslation } from 'react-i18next';
+import { track } from '@vercel/analytics'; // Add this import
+import { useEffect, useRef } from 'react'; // Add useRef and useEffect
 
 const Contact = () => {
   const { t } = useTranslation('contact');
+  const sectionRef = useRef(null); // Add ref for section tracking
+
+  // Track when section becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          track('Section View', { section: 'contact' });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Track contact interactions
+  const handleEmailClick = () => {
+    track('Contact Click', { type: 'email' });
+  };
+
+  const handleLinkedInClick = () => {
+    track('Contact Click', { type: 'linkedin' });
+  };
+
+  const handleGitHubClick = () => {
+    track('Contact Click', { type: 'github' });
+  };
 
   return (
-    <ContactSection id="contact">
+    <ContactSection id="contact" ref={sectionRef}> {/* Add ref here */}
       <ContactContainer>
         <Title>{t('title')}</Title>
         <Subtitle>{t('subtitle')}</Subtitle>
 
-        <PrimaryAction href="mailto:your.email@example.com">
+        <PrimaryAction 
+          href="mailto:your.email@example.com"
+          onClick={handleEmailClick}
+        >
           <Mail size={22} />
           {t('cta')}
         </PrimaryAction>
@@ -24,11 +61,21 @@ const Contact = () => {
         </Divider>
 
         <SocialLinks>
-          <SocialLink href="https://www.linkedin.com/in/joannathhuang/" target="_blank" rel="noopener noreferrer">
+          <SocialLink 
+            href="https://www.linkedin.com/in/joannathhuang/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={handleLinkedInClick}
+          >
             <Linkedin size={24} />
             {t('linkedin')}
           </SocialLink>
-          <SocialLink href="https://github.com/jthnyc" target="_blank" rel="noopener noreferrer">
+          <SocialLink 
+            href="https://github.com/jthnyc" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={handleGitHubClick}
+          >
             <GitHub size={24} />
             {t('github')}
           </SocialLink>

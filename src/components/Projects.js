@@ -3,9 +3,31 @@ import Project from "./Project";
 import { scenesync, khvs, pollyglot, theshoppies } from "../images";
 import { device } from "../device";
 import { useTranslation } from "react-i18next";
+import { track } from '@vercel/analytics'; // Add this import
+import { useEffect, useRef } from 'react'; // Add useRef and useEffect
 
 export const Projects = () => {
   const { t, ready } = useTranslation("projects");
+  const sectionRef = useRef(null); // Add ref for section tracking
+
+  // Track when section becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          track('Section View', { section: 'projects' });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+  
   if (!ready) return <p>Loading translations...</p>;
   
   const projects = [
@@ -49,12 +71,34 @@ export const Projects = () => {
       link: "https://movie-nom-app.vercel.app/",
     },
   ];
+
+  // Pass tracking function to each project
+  const projectsWithTracking = projects.map(project => ({
+    ...project,
+    onProjectClick: () => {
+      track('Project Card Click', { 
+        project: project.title,
+        status: project.status,
+        id: project.id
+      });
+    },
+    onGithubClick: () => {
+      track('Project GitHub Click', { 
+        project: project.title
+      });
+    },
+    onLiveLinkClick: () => {
+      track('Project Live Link Click', { 
+        project: project.title
+      });
+    }
+  }));
   
   return (
-    <ProjectSection id="projects">
+    <ProjectSection id="projects" ref={sectionRef}> {/* Add ref here */}
       <h2>{t("title")}</h2>
       <ProjectsContainer>
-        {projects.map((project) => (
+        {projectsWithTracking.map((project) => (
           <Project {...project} key={project.id} id={`project-${project.id}`} />
         ))}
       </ProjectsContainer>

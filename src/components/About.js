@@ -2,22 +2,70 @@ import styled from 'styled-components';
 import { device } from '../device';
 import { useTranslation } from 'react-i18next';
 import SkillConstellation from './SkillConstellation';
+import { track } from '@vercel/analytics';
+import { useEffect, useRef } from 'react';
 
 const About = () => {
   const { t } = useTranslation('about');
   const timelineStops = t('timeline', { returnObjects: true });
+  const sectionRef = useRef(null);
+
+  // Track when section becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          track('Section View', { section: 'about' });
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Handle project link clicks via event delegation
+  useEffect(() => {
+    const handleProjectLinkClick = (e) => {
+      // Check if the clicked element or its parent is a project link
+      const link = e.target.closest('.project-link');
+      if (link) {
+        const projectName = link.textContent;
+        track('Project Link Click', { 
+          project: projectName, 
+          section: 'about' 
+        });
+      }
+    };
+
+    // Add event listener to the narrative content container
+    const narrativeContent = document.querySelector('.narrative-content');
+    if (narrativeContent) {
+      narrativeContent.addEventListener('click', handleProjectLinkClick);
+    }
+
+    return () => {
+      if (narrativeContent) {
+        narrativeContent.removeEventListener('click', handleProjectLinkClick);
+      }
+    };
+  }, []); // Empty dependency array since t() is stable
 
   // Function to highlight projects as clickable links
   const highlightText = (text) => {
     let highlightedText = text;
     
-    // Highlight projects as links
     const projects = t('highlight_projects', { returnObjects: true });
     if (Array.isArray(projects)) {
       projects.forEach(project => {
         const regex = new RegExp(`(${project.name})`, 'g');
+        // Use data attribute instead of onclick
         highlightedText = highlightedText.replace(regex, 
-          `<a href="${project.anchor}" class="project-link">$1</a>`);
+          `<a href="${project.anchor}" class="project-link" data-project="${project.name}">$1</a>`);
       });
     }
     
@@ -30,7 +78,6 @@ const About = () => {
       return highlightText(text);
     }
     
-    // Find first sentence (ends with . ? ! or line break)
     const match = text.match(/^([^.!?]+[.!?])/);
     if (match) {
       const firstSentence = match[1];
@@ -44,7 +91,7 @@ const About = () => {
   };
 
   return (
-    <AboutSection id="about">
+    <AboutSection id="about" ref={sectionRef}>
       <h2>{t('title')}</h2>
       
       <SplitContainer>
@@ -63,7 +110,7 @@ const About = () => {
         </TimelineSidebar>
 
         {/* Right: Narrative */}
-        <NarrativeContent>
+        <NarrativeContent className="narrative-content">
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p1')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p2')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p3'), true) }} /> 
@@ -74,7 +121,6 @@ const About = () => {
         </NarrativeContent>
       </SplitContainer>
 
-      {/* Skill Constellation */}
       <SkillConstellation />
     </AboutSection>
   );
@@ -82,6 +128,7 @@ const About = () => {
 
 export default About;
 
+// All styled components remain exactly the same
 const AboutSection = styled.section`
   max-width: 75rem;
   color: var(--white);
@@ -195,33 +242,28 @@ const Paragraph = styled.p`
   color: var(--white);
   margin: 0;
   
-  /* Company highlights - just text color, no background */
   & mark.company {
     background: none;
     color: var(--cyan);
     font-weight: 600;
   }
   
-  /* Metric highlights */
   & mark.metric {
     background: none;
     color: var(--coral);
     font-weight: 600;
   }
 
-  /* First sentence highlight for better readability */
   & span.first-sentence {
     color: var(--cyan);
     font-weight: 500;
   }
   
-  /* Value prop highlights (p5) */
   & span.value-highlight {
     color: var(--cyan);
     font-weight: 600;
   }
   
-  /* Project links */
   & a.project-link {
     color: var(--coral);
     font-weight: 600;
@@ -238,12 +280,10 @@ const Paragraph = styled.p`
   @media ${device.sm} {
     font-size: 1rem;
     
-    /* Make first sentence more prominent on mobile */
     & span.first-sentence {
       font-weight: 600;
     }
     
-    /* Value prop highlights stay bold on mobile */
     & span.value-highlight {
       font-weight: 700;
     }
