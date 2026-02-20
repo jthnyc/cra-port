@@ -6,22 +6,14 @@ import SkillConstellation from './SkillConstellation';
 const About = () => {
   const { t } = useTranslation('about');
 
-  const timelineStops = [
-    { label: 'Music Teaching', detail: 'Saw edtech gaps' },
-    { label: 'iOS Dev', detail: 'Flatiron School' },
-    { label: 'MusicFirst', detail: '+21.9% renewals', highlight: true },
-    { label: 'Teachable', detail: 'User feedback → Engineering' },
-    { label: 'Grace Hopper', detail: 'Full-stack bootcamp' },
-    { label: 'BORN Group', detail: 'Production React/Redux' },
-    { label: 'Kuang-hwa', detail: '9-month transformation', highlight: true },
-    { label: 'Now', detail: 'SceneSync + PollyGlot' }
-  ];
+  // Get timeline from i18n
+  const timelineStops = t('timeline', { returnObjects: true });
 
-  // Function to highlight companies and metrics
+  // Function to highlight projects as clickable links
   const highlightText = (text) => {
     let highlightedText = text;
     
-    // Highlight projects first (as links) - for both languages
+    // Highlight projects as links
     const projects = t('highlight_projects', { returnObjects: true });
     if (Array.isArray(projects)) {
       projects.forEach(project => {
@@ -30,21 +22,6 @@ const About = () => {
           `<a href="${project.anchor}" class="project-link">$1</a>`);
       });
     }
-    
-    // Highlight companies - for both languages
-    const companies = t('highlight_companies', { returnObjects: true });
-    companies.forEach(company => {
-      // Only replace if not already inside an anchor tag
-      const regex = new RegExp(`(?<!<a[^>]*>)(?<!<a[^>]*>[^<]*)(${company})(?![^<]*</a>)`, 'g');
-      highlightedText = highlightedText.replace(regex, '<mark class="company">$1</mark>');
-    });
-    
-    // Highlight metrics - for both languages
-    const metrics = t('highlight_metrics', { returnObjects: true });
-    metrics.forEach(metric => {
-      const regex = new RegExp(`(${metric})`, 'g');
-      highlightedText = highlightedText.replace(regex, '<mark class="metric">$1</mark>');
-    });
     
     return highlightedText;
   };
@@ -72,8 +49,9 @@ const About = () => {
         <NarrativeContent>
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p1')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p2')) }} />
-          <HighlightParagraph dangerouslySetInnerHTML={{ __html: highlightText(t('p3-highlight')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p3')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p4')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p5')) }} />
         </NarrativeContent>
       </SplitContainer>
 
@@ -96,7 +74,6 @@ const AboutSection = styled.section`
   }
   
   @media ${device.sm} {
-    // padding: 0 1rem;
     & h2 {
       margin-top: 6rem;
     }
@@ -235,17 +212,5 @@ const Paragraph = styled.p`
   
   @media ${device.sm} {
     font-size: 1rem;
-  }
-`;
-
-const HighlightParagraph = styled(Paragraph)`
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--cyan);
-  margin: 1.5rem 0 1rem 0;  /* Reduced from 2.5rem to 1.5rem top, 1rem bottom */
-  
-  @media ${device.sm} {
-    font-size: 1.125rem;
-    margin: 1.25rem 0 0.75rem 0;
   }
 `;
