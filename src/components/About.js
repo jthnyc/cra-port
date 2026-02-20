@@ -5,8 +5,6 @@ import SkillConstellation from './SkillConstellation';
 
 const About = () => {
   const { t } = useTranslation('about');
-
-  // Get timeline from i18n
   const timelineStops = t('timeline', { returnObjects: true });
 
   // Function to highlight projects as clickable links
@@ -68,8 +66,10 @@ const About = () => {
         <NarrativeContent>
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p1')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p2')) }} />
-          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p3'), true) }} />
-          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p4')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightFirstSentence(t('p3'), true) }} /> 
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p4')) }} /> 
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p4a')) }} />
+          <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p4b')) }} />
           <Paragraph dangerouslySetInnerHTML={{ __html: highlightText(t('p5')) }} />
         </NarrativeContent>
       </SplitContainer>
@@ -249,16 +249,3 @@ const Paragraph = styled.p`
     }
   }
 `;
-
-// const HighlightParagraph = styled(Paragraph)`
-//   font-size: 1.125rem;
-//   font-weight: 500;
-//   color: var(--cyan);
-//   margin: 1.5rem 0 0 0;
-//   line-height: 1.8;
-  
-//   @media ${device.sm} {
-//     font-size: 1.0625rem;
-//     margin: 1.25rem 0 0 0;
-//   }
-// `;
