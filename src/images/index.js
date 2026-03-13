@@ -7,7 +7,7 @@ import lalalime from './lalalime.png';
 import theshoppies from './theshoppies.png';
 import wanderlust from './wanderlust.png';
 import yearone from './yearonemovieratings.png';
-import scenesync from './scenesync.png';
+import scenesync from './scenesync1.png';
 import pollyglot from './pollyglot.png';
 import khvs from './khvs.png';
 

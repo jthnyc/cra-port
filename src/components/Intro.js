@@ -52,24 +52,27 @@ const Intro = () => {
             {t("intro-p1")}
             <br/><br/>
             {t("intro-p2")}
+            {t("intro-p2-1")}
             <ActivityIcon 
               src={spotify} 
               alt="Spotify" 
               onClick={() => handleActivityClick('spotify')}
               style={{ cursor: 'pointer' }}
-            /> {t("intro-p2-1")}
+            />
+            {t("intro-p2-2")}
             <ActivityIcon 
               src={duolingo} 
               alt="duolingo" 
               onClick={() => handleActivityClick('duolingo')}
               style={{ cursor: 'pointer' }}
-            /> {t("intro-p2-2")}
+            />
+            {t("intro-p2-3")}
             <ActivityIcon 
               src={dumpling} 
               alt="dumpling" 
               onClick={() => handleActivityClick('dumpling')}
               style={{ cursor: 'pointer' }}
-            /> {t("intro-p2-3")}
+            />
             <br/><br/>
             {t("intro-p3")}
           </IntroText>
@@ -217,6 +220,8 @@ const TextSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
+  z-index: 2;
   
   @media (max-width: 1070px) {
     max-width: 100%;
