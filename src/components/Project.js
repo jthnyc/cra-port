@@ -75,55 +75,66 @@ const Project = ({
 
   const renderDescription = () => {
     const isChinese = /[\u4e00-\u9fa5]/.test(description);
-    const parts = isChinese 
-      ? description.split(/(?<=。)\s*/) 
-      : description.split(/(?<=\.)\s+/);
     
-    const paragraphs = [];
-    
-    if (parts.length > 0) {
-      const problemText = parts.slice(0, 2).join(' ');
-      paragraphs.push({ text: problemText, color: 'var(--lightorange)' });
-    }
-    
-    let statusStartIndex = -1;
-    for (let i = 2; i < parts.length; i++) {
-      if (parts[i].includes('%') || 
-          parts[i].includes('transparency') || 
-          parts[i].includes('launched') || 
-          parts[i].includes('Launched') ||
-          parts[i].includes('完整透明度') ||
-          parts[i].includes('上線') ||
-          parts[i].includes('已上線')) {
-        statusStartIndex = i;
-        break;
+    // First split by explicit paragraph breaks
+    const paragraphs = description.split(/\n\n/);
+    const result = [];
+
+    for (let i = 0; i < paragraphs.length; i++) {
+      const block = paragraphs[i].trim();
+      if (!block) continue;
+      
+      // Determine color for this block based on content
+      let color = 'var(--white)'; // default
+      
+      // Check if this block is the "problem" block (usually the first one)
+      // Contains description of the original problem/use case
+      if (i === 0 && (
+        block.includes('spend hours searching') ||
+        block.includes('花費大量時間尋找')
+      )) {
+        color = 'var(--lightorange)';
+      }
+      // Check if this block contains status indicators
+      else if (
+        block.includes('%') ||
+        block.includes('transparency') ||
+        block.includes('launched') ||
+        block.includes('Launched') ||
+        block.includes('完整透明度') ||
+        block.includes('上線') ||
+        block.includes('已上線')
+      ) {
+        color = 'var(--coral)';
+      }
+      // Otherwise it's approach/explanation, keep default white
+      
+      // For blocks that are long, we could further split by sentences,
+      // but to keep formatting clean we'll render the whole block as one paragraph.
+      // However, to preserve the original readability, we'll break long Chinese/English sentences
+      // by splitting on sentence delimiters and rejoining with spacing.
+      if (isChinese) {
+        // Chinese: split by Chinese period and join with spaces for readability
+        const sentences = block.split(/(?<=[。？！])/);
+        const text = sentences.join(' ');
+        result.push(
+          <Paragraph key={i} $color={color}>
+            {text}
+          </Paragraph>
+        );
+      } else {
+        // English: split by period, question, exclamation
+        const sentences = block.split(/(?<=[.!?])\s+/);
+        const text = sentences.join(' ');
+        result.push(
+          <Paragraph key={i} $color={color}>
+            {text}
+          </Paragraph>
+        );
       }
     }
-    
-    if (statusStartIndex > 2) {
-      const approachText = parts.slice(2, statusStartIndex).join(' ');
-      if (approachText) {
-        paragraphs.push({ text: approachText, color: 'var(--white)' });
-      }
-    } else if (parts.length > 2) {
-      const approachText = parts.slice(2, parts.length - 1).join(' ');
-      if (approachText) {
-        paragraphs.push({ text: approachText, color: 'var(--white)' });
-      }
-    }
-    
-    if (statusStartIndex > -1) {
-      const statusText = parts.slice(statusStartIndex).join(' ');
-      paragraphs.push({ text: statusText, color: 'var(--coral)' });
-    } else if (parts.length > 2) {
-      paragraphs.push({ text: parts[parts.length - 1], color: 'var(--coral)' });
-    }
-    
-    return paragraphs.map((para, index) => (
-      <Paragraph key={index} $color={para.color}>
-        {para.text}
-      </Paragraph>
-    ));
+
+    return result;
   };
 
   return (
